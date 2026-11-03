@@ -27,7 +27,7 @@ export default function App() {
           <CoupleSection />
           <Countdown />
           <section className="section events" id="events" aria-labelledby="ev-title">
-            <Reveal><p className="label">Save the date</p><h2 id="ev-title" className="script">Wedding Events</h2></Reveal>
+            <Reveal><p className="label">04 - Save the date</p><h2 id="ev-title" className="display"><span>The celebration</span></h2></Reveal>
             <div className="event-grid"><EventCard kind="ceremony" /><EventCard kind="reception" /></div>
           </section>
           <OurStory />

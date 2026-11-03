@@ -10,8 +10,8 @@ export default function Gallery() {
   return (
     <section className="section gallery" id="gallery" aria-labelledby="gal-title">
       <Reveal>
-        <p className="label">Moments</p>
-        <h2 id="gal-title" className="script">Photo Gallery</h2>
+        <p className="label">06 - Moments</p>
+        <h2 id="gal-title" className="display"><span>Photo gallery</span></h2>
       </Reveal>
       <div className="masonry">
         {wedding.gallery.map((img, i) => (

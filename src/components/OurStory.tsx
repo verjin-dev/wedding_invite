@@ -6,8 +6,8 @@ export default function OurStory() {
     <section className="section story" id="story" aria-labelledby="story-title">
       <img className="story-accent" src="/florals/accent-spray.svg" alt="" aria-hidden="true" loading="lazy" />
       <Reveal>
-        <p className="label">A little about us</p>
-        <h2 id="story-title" className="script">{wedding.story.heading}</h2>
+        <p className="label">05 - A little about us</p>
+        <h2 id="story-title" className="display"><span>{wedding.story.heading}</span></h2>
         <div className="story-grid">
           <img src="/images/IMG_1741.jpeg" alt="Jesmi smiling at Verjin, with a bouquet in the foreground" loading="lazy" decoding="async" />
           <div>

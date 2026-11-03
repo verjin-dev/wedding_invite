@@ -42,7 +42,7 @@ export default function EnvelopeOpening({ onOpened }: Props) {
               <div className="env-flap" />
               <img className="env-seal" src="/florals/emblem.svg" alt="" />
             </div>
-            <h1 className="script names"><span>Verjin</span><i>&amp;</i><span>Jesmi</span></h1>
+            <h1 className="env-names script"><span>Verjin</span><i>&amp;</i><span>Jesmi</span></h1>
             <p className="serif date">17 · May · 2027</p>
             <button type="button" className="btn btn-gold" onClick={open} autoFocus>Open Invitation</button>
             <button type="button" className="skip-link" onClick={skip}>Skip animation</button>

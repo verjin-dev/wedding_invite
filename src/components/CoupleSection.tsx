@@ -6,19 +6,17 @@ import Reveal from './Reveal';
 export default function CoupleSection() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], ['-6%', '6%']);
+  const y = useTransform(scrollYProgress, [0, 1], ['-8%', '8%']);
   return (
-    <section className="section couple" id="couple" ref={ref} aria-labelledby="couple-title">
-      <Reveal className="couple-photo">
-        <div className="photo-frame">
-          <motion.img style={{ y, scale: 1.12 }} src="/images/IMG_2012(1).jpeg" alt="Verjin and Jesmi standing together in a sunlit garden" loading="lazy" decoding="async" />
-        </div>
-      </Reveal>
-      <Reveal delay={0.15} className="couple-copy">
-        <p className="label">The couple</p>
-        <h2 id="couple-title" className="script">{wedding.groom} <i>&amp;</i> {wedding.bride}</h2>
-        <p className="serif date">{wedding.dateLabel}</p>
-        <p className="serif">Two hearts, joined in faith and love, ready to begin a lifetime together. Thank you for being part of our journey.</p>
+    <section className="couple" id="couple" ref={ref} aria-labelledby="couple-title">
+      <div className="couple-bg">
+        <motion.img style={{ y, scale: 1.2 }} src="/images/IMG_1741.jpeg" alt="Jesmi smiling at Verjin, with a bouquet in the foreground" loading="lazy" decoding="async" />
+      </div>
+      <Reveal className="couple-copy">
+        <p className="label">02 — The couple</p>
+        <h2 id="couple-title" className="display"><span>{wedding.groom}</span><i>&amp;</i><span>{wedding.bride}</span></h2>
+        <p className="date">{wedding.dateLabel}</p>
+        <p>Two hearts, joined in faith and love, ready to begin a lifetime together. Thank you for being part of our journey.</p>
       </Reveal>
     </section>
   );

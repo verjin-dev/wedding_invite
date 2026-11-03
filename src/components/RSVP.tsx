@@ -27,8 +27,8 @@ export default function RSVP() {
   return (
     <section className="section rsvp" id="rsvp" aria-labelledby="rsvp-title">
       <Reveal>
-        <p className="label">Kindly respond</p>
-        <h2 id="rsvp-title" className="script">RSVP</h2>
+        <p className="label">07 - Kindly respond</p>
+        <h2 id="rsvp-title" className="display"><span>RSVP</span></h2>
         {!configured && (
           <p className="notice" role="note">RSVP is not enabled yet. The hosts will add a WhatsApp number or email soon — nothing entered here is sent or stored.</p>
         )}
