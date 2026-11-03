@@ -1,25 +1,28 @@
-import { CalendarDays, Clock, MapPin } from 'lucide-react';
+import { ArrowUpRight, CalendarDays, Church, MapPin, PartyPopper } from 'lucide-react';
 import { wedding } from '../data/wedding';
-import { Drop } from './Reveal';
+import { Card } from './Reveal';
 
-type Props = { kind: 'ceremony' | 'reception'; index: number };
+type Props = { kind: 'ceremony' | 'reception' };
 
-export default function EventCard({ kind, index }: Props) {
+export default function EventCard({ kind }: Props) {
   const e = wedding[kind];
+  const Icon = kind === 'ceremony' ? Church : PartyPopper;
+  const [time, suffix] = kind === 'ceremony' ? ['10:30', 'AM'] : ['5:00 – 9:00', 'PM'];
   return (
-    <Drop tilt={index === 0 ? -1.5 : 1.5} delay={index * 0.12} className={`ticket ticket-${kind}`}>
-      <div className="ticket-main">
-        <p className="label">{kind === 'ceremony' ? 'Admit two · Morning' : 'Admit all · Evening'}</p>
-        <h3 className="hand-title sm"><span>{e.title}</span></h3>
-        <ul>
-          <li><CalendarDays size={18} strokeWidth={1.3} aria-hidden="true" /> 17 May 2027</li>
-          <li><Clock size={18} strokeWidth={1.3} aria-hidden="true" /> {e.time}</li>
-          <li><MapPin size={18} strokeWidth={1.3} aria-hidden="true" /> <span><strong>{e.venue}</strong><br />{e.location}</span></li>
-        </ul>
+    <Card className={`event ${kind === 'reception' ? 'b-rec dark' : 'b-cer'}`} delay={kind === 'reception' ? 0.1 : 0}>
+      <div className="event-top">
+        <span className="icon-chip"><Icon size={20} strokeWidth={1.5} aria-hidden="true" /></span>
+        <p className="eyebrow">{e.title}</p>
       </div>
-      <div className="ticket-stub">
-        <a className="btn btn-outline" href={e.mapsUrl} target="_blank" rel="noopener noreferrer">Get directions<span className="sr-only"> to {e.venue} (opens in a new tab)</span></a>
-      </div>
-    </Drop>
+      <p className="time">{time}<small>{suffix}</small></p>
+      <ul>
+        <li><CalendarDays size={18} strokeWidth={1.5} aria-hidden="true" /> 17 May 2027</li>
+        <li><MapPin size={18} strokeWidth={1.5} aria-hidden="true" /> <span><strong>{e.venue}</strong><br />{e.location}</span></li>
+      </ul>
+      <a className="pill" href={e.mapsUrl} target="_blank" rel="noopener noreferrer">
+        Get directions <ArrowUpRight size={16} aria-hidden="true" />
+        <span className="sr-only"> to {e.venue} (opens in a new tab)</span>
+      </a>
+    </Card>
   );
 }

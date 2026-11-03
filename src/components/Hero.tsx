@@ -1,45 +1,37 @@
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import { wedding } from '../data/wedding';
-import Florals from './Florals';
-import Polaroid from './Polaroid';
-import { PenLine } from './Reveal';
 
 export default function Hero({ ready }: { ready: boolean }) {
   const rise = (delay: number) => ({
-    initial: { opacity: 0, y: 18 },
-    animate: ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
-    transition: { duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] as const },
+    initial: { opacity: 0, y: 30 },
+    animate: ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+    transition: { duration: 1, delay, ease: [0.16, 1, 0.3, 1] as const },
   });
   return (
     <section className="hero" id="top">
-      <Florals />
-      <div className="hero-grid">
-        <div className="hero-photo">
-          {ready && <Polaroid eager tilt={-3} src="/images/IMG_2012(1).jpeg" alt="Verjin and Jesmi standing together in a sunlit garden" note="the two of us" />}
-          <motion.svg className="stamp" viewBox="0 0 120 120" aria-hidden="true"
-            initial={{ opacity: 0, scale: 1.8, rotate: -30 }} animate={ready ? { opacity: 1, scale: 1, rotate: -14 } : { opacity: 0 }}
-            transition={{ delay: 1.4, type: 'spring', stiffness: 220, damping: 14 }}>
-            <defs><path id="ring" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0" /></defs>
-            <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" strokeWidth="2" />
-            <circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" strokeWidth="1" />
-            <text fontSize="10.5" letterSpacing="3" fill="currentColor" fontFamily="Cinzel, serif"><textPath href="#ring">SAVE THE DATE · SAVE THE DATE · </textPath></text>
-            <text x="60" y="58" textAnchor="middle" fontSize="20" fill="currentColor" fontFamily="Cormorant Garamond, serif" fontWeight="600">17</text>
-            <text x="60" y="76" textAnchor="middle" fontSize="11" letterSpacing="2" fill="currentColor" fontFamily="Cinzel, serif">MAY 27</text>
-          </motion.svg>
-        </div>
-        <div className="hero-copy">
-          <motion.p className="label" {...rise(0.4)}>Together with their families</motion.p>
-          <motion.h1 className="hand-title" {...rise(0.7)}>
+      <motion.div
+        className="hero-card"
+        initial={{ clipPath: 'inset(8% 8% 8% 8% round 40px)' }}
+        animate={{ clipPath: ready ? 'inset(0% 0% 0% 0% round 32px)' : 'inset(8% 8% 8% 8% round 40px)' }}
+        transition={{ duration: 1.4, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
+      >
+        <motion.img
+          src="/images/IMG_2012(1).jpeg" alt="Verjin and Jesmi standing together in a sunlit garden" decoding="async" fetchPriority="high"
+          initial={{ scale: 1.25 }} animate={{ scale: ready ? 1 : 1.25 }} transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+        />
+        <div className="hero-shade" aria-hidden="true" />
+        <motion.p className="chip hero-chip" {...rise(0.9)}>{wedding.dateShort}</motion.p>
+        <div className="hero-text">
+          <motion.p className="eyebrow light" {...rise(0.8)}>Together with their families</motion.p>
+          <motion.h1 className="hero-names" {...rise(1)}>
             <span>{wedding.groom}</span>
-            <i>and</i>
+            <i>&amp;</i>
             <span>{wedding.bride}</span>
           </motion.h1>
-          {ready && <PenLine className="hero-pen" delay={1.4} />}
-          <motion.p className="typed" {...rise(1.2)}>{wedding.dateLabel}</motion.p>
-          <motion.a href="#invitation" className="scroll-cue" aria-label="Scroll to the invitation" {...rise(1.6)}><ChevronDown /></motion.a>
         </div>
-      </div>
+        <motion.a href="#day" className="round-btn hero-down" aria-label="Scroll to the details" {...rise(1.4)}><ArrowDown size={20} /></motion.a>
+      </motion.div>
     </section>
   );
 }

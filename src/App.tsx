@@ -9,28 +9,27 @@ import Hero from './components/Hero';
 import InvitationCard from './components/InvitationCard';
 import Navigation from './components/Navigation';
 import OurStory from './components/OurStory';
-import Reveal from './components/Reveal';
 import RSVP from './components/RSVP';
+import SlideGate from './components/SlideGate';
 import VenueDirections from './components/VenueDirections';
-import WaxGate from './components/WaxGate';
 
 export default function App() {
   const [opened, setOpened] = useState(false);
   return (
     <MotionConfig reducedMotion="user">
-      <WaxGate onOpened={() => setOpened(true)} />
+      <SlideGate onOpened={() => setOpened(true)} />
       <div className="site" inert={!opened}>
         <Navigation />
         <main>
           <Hero ready={opened} />
-          <InvitationCard />
-          <CoupleSection />
-          <Countdown />
-          <section className="page events" id="events" aria-labelledby="ev-title">
-            <Reveal><p className="note">save the date</p><h2 id="ev-title" className="hand-title sm"><span>Your tickets</span></h2></Reveal>
-            <div className="event-grid"><EventCard kind="ceremony" index={0} /><EventCard kind="reception" index={1} /></div>
+          <section className="bento" id="day" aria-label="Wedding details">
+            <InvitationCard />
+            <Countdown />
+            <EventCard kind="ceremony" />
+            <EventCard kind="reception" />
+            <CoupleSection />
+            <OurStory />
           </section>
-          <OurStory />
           <Gallery />
           <RSVP />
           <VenueDirections />
