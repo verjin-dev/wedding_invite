@@ -1,20 +1,20 @@
 import { wedding } from '../data/wedding';
-import Reveal, { ArchReveal } from './Reveal';
+import Polaroid from './Polaroid';
+import { Drop, PenLine } from './Reveal';
 
 export default function OurStory() {
   return (
-    <section className="section story" id="story" aria-labelledby="story-title">
+    <section className="page story" id="story" aria-labelledby="story-title">
       <img className="story-accent" src="/florals/accent-spray.svg" alt="" aria-hidden="true" loading="lazy" />
-      <Reveal>
-        <p className="label">05 - A little about us</p>
-        <h2 id="story-title" className="display"><span>{wedding.story.heading}</span></h2>
-        <div className="story-grid">
-          <ArchReveal className="story-photo"><img src="/images/IMG_1741.jpeg" alt="Jesmi smiling at Verjin, with a bouquet in the foreground" loading="lazy" decoding="async" /></ArchReveal>
-          <div>
-            {wedding.story.paragraphs.map((p) => <p className="serif" key={p}>{p}</p>)}
-          </div>
-        </div>
-      </Reveal>
+      <Drop tilt={0.8} className="paper lined">
+        <span className="tape tape-r" aria-hidden="true" />
+        <p className="note">a little about us</p>
+        <h2 id="story-title" className="hand-title sm"><span>{wedding.story.heading}</span></h2>
+        <PenLine className="title-pen" />
+        {wedding.story.paragraphs.map((p) => <p className="letter-line" key={p}>{p}</p>)}
+        <p className="sign">with love, {wedding.displayNames}</p>
+      </Drop>
+      <Polaroid tilt={5} delay={0.2} className="story-pol" src="/images/IMG_1741.jpeg" alt="Jesmi smiling at Verjin, with a bouquet in the foreground" note="always smiling" />
     </section>
   );
 }

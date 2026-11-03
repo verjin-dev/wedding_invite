@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { wedding } from '../data/wedding';
-import Reveal from './Reveal';
+import { Drop } from './Reveal';
 
 export default function RSVP() {
   const { whatsappNumber, email } = wedding.rsvp;
@@ -25,10 +25,11 @@ export default function RSVP() {
   };
 
   return (
-    <section className="section rsvp" id="rsvp" aria-labelledby="rsvp-title">
-      <Reveal>
-        <p className="label">07 - Kindly respond</p>
-        <h2 id="rsvp-title" className="display"><span>RSVP</span></h2>
+    <section className="page rsvp" id="rsvp" aria-labelledby="rsvp-title">
+      <Drop tilt={-0.8} className="paper reply">
+        <span className="tape tape-l" aria-hidden="true" />
+        <p className="note">kindly reply</p>
+        <h2 id="rsvp-title" className="hand-title sm"><span>RSVP</span></h2>
         {!configured && (
           <p className="notice" role="note">RSVP is not enabled yet. The hosts will add a WhatsApp number or email soon — nothing entered here is sent or stored.</p>
         )}
@@ -45,7 +46,7 @@ export default function RSVP() {
           </fieldset>
         </form>
         {sent && <p className="notice" role="status">Your app should have opened with the RSVP message ready. It is only delivered once you press send there.</p>}
-      </Reveal>
+      </Drop>
     </section>
   );
 }
