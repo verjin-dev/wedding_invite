@@ -30,7 +30,7 @@ export const wedding = {
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Christ+the+King+Community+Hall+Kulappuram',
   },
   // RSVP: set ONE of these to enable it. Digits only with country code, e.g. '919876543210'.
-  rsvp: { whatsappNumber: '', email: '' },
+  rsvp: { whatsappNumber: '919080181819', email: 'verjin2001@gmail.com' },
   gallery: [
     { src: '/images/IMG_2012(1).jpeg', alt: 'Verjin and Jesmi standing together in a sunlit garden' },
     { src: '/images/IMG_1741.jpeg', alt: 'Verjin and Jesmi sharing a smile, with a bouquet in the foreground' },
