@@ -1,4 +1,4 @@
-import { CalendarDays, Clock, MapPin } from 'lucide-react';
+import { CalendarDays, Clock, MapPin, Sun, Sunset } from 'lucide-react';
 import { wedding } from '../data/wedding';
 import Reveal from './Reveal';
 
@@ -6,11 +6,12 @@ type Props = { kind: 'ceremony' | 'reception' };
 
 export default function EventCard({ kind }: Props) {
   const e = wedding[kind];
-  const num = kind === 'ceremony' ? 'I' : 'II';
+  const Icon = kind === 'ceremony' ? Sun : Sunset;
+  const part = kind === 'ceremony' ? 'Morning' : 'Evening';
   return (
     <Reveal className="event-wrap">
-      <article className="event">
-        <span className="event-num" aria-hidden="true">{num}</span>
+      <article className={`event event-${kind}`}>
+        <span className="event-part"><Icon size={20} strokeWidth={1.3} aria-hidden="true" /> {part}</span>
         <h3>{e.title}</h3>
         <ul>
           <li><CalendarDays size={18} strokeWidth={1.3} aria-hidden="true" /> 17 May 2027</li>

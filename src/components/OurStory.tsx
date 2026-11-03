@@ -1,5 +1,5 @@
 import { wedding } from '../data/wedding';
-import Reveal from './Reveal';
+import Reveal, { ArchReveal } from './Reveal';
 
 export default function OurStory() {
   return (
@@ -9,7 +9,7 @@ export default function OurStory() {
         <p className="label">05 - A little about us</p>
         <h2 id="story-title" className="display"><span>{wedding.story.heading}</span></h2>
         <div className="story-grid">
-          <img src="/images/IMG_1741.jpeg" alt="Jesmi smiling at Verjin, with a bouquet in the foreground" loading="lazy" decoding="async" />
+          <ArchReveal className="story-photo"><img src="/images/IMG_1741.jpeg" alt="Jesmi smiling at Verjin, with a bouquet in the foreground" loading="lazy" decoding="async" /></ArchReveal>
           <div>
             {wedding.story.paragraphs.map((p) => <p className="serif" key={p}>{p}</p>)}
           </div>

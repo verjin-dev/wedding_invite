@@ -2,13 +2,14 @@ import { MotionConfig } from 'framer-motion';
 import { useState } from 'react';
 import Countdown from './components/Countdown';
 import CoupleSection from './components/CoupleSection';
-import EnvelopeOpening from './components/EnvelopeOpening';
+import DawnGate from './components/DawnGate';
 import EventCard from './components/EventCard';
 import Footer from './components/Footer';
 import Gallery from './components/Gallery';
 import Hero from './components/Hero';
 import InvitationCard from './components/InvitationCard';
 import Navigation from './components/Navigation';
+import Sky from './components/Sky';
 import OurStory from './components/OurStory';
 import Reveal from './components/Reveal';
 import RSVP from './components/RSVP';
@@ -18,11 +19,12 @@ export default function App() {
   const [opened, setOpened] = useState(false);
   return (
     <MotionConfig reducedMotion="user">
-      <EnvelopeOpening onOpened={() => setOpened(true)} />
+      <Sky />
+      <DawnGate onOpened={() => setOpened(true)} />
       <div className="site" inert={!opened}>
         <Navigation />
         <main>
-          <Hero />
+          <Hero ready={opened} />
           <InvitationCard />
           <CoupleSection />
           <Countdown />

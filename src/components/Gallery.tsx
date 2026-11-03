@@ -18,7 +18,7 @@ export default function Gallery() {
           <motion.button
             key={img.src} type="button" className="tile" onClick={() => setActive(i)}
             aria-label={`View photo ${i + 1}: ${img.alt}`}
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, delay: (i % 3) * 0.08 }}
+            initial={{ clipPath: 'inset(100% 0 0 0)' }} whileInView={{ clipPath: 'inset(0% 0 0 0)' }} viewport={{ once: true, margin: '-40px' }} transition={{ duration: 1.1, delay: (i % 3) * 0.12, ease: [0.65, 0, 0.2, 1] }}
           >
             <img src={img.src} alt="" loading="lazy" decoding="async" />
           </motion.button>
