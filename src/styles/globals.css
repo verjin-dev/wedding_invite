@@ -129,7 +129,8 @@ button { font: inherit; }
 .dark li strong { color: #fff; }
 
 .photo-card { padding: 0; }
-.photo-card > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 30%; }
+.duo { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.duo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
 .photo-caption { position: relative; margin-top: auto; padding: 5rem 1.6rem 1.6rem; color: #fff; background: linear-gradient(180deg, transparent, rgb(15 31 58 / .85)); display: grid; gap: .3rem; }
 .photo-caption h2 { font: italic 400 clamp(2rem, 5vw, 2.8rem)/1.05 var(--font-display); }
 .photo-caption h2 i { color: var(--gold-bright); }
@@ -161,22 +162,12 @@ button { font: inherit; }
 .lb-close { top: 14px; right: 14px; } .lb-prev { left: 10px; } .lb-next { right: 10px; }
 .lb-count { position: absolute; bottom: 14px; color: #fff; font: .85rem var(--font-ui); }
 
-/* RSVP */
-.rsvp-card { display: grid; gap: 2rem; }
-@media (min-width: 860px) { .rsvp-card { grid-template-columns: 1fr 1.1fr; gap: 3rem; } }
-.rsvp-intro { display: grid; gap: 1rem; align-content: start; }
-.rsvp-form fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 1rem; }
-.rsvp-form fieldset:disabled { opacity: .55; }
-.rsvp-form label { display: grid; gap: .4rem; font: 600 .78rem var(--font-ui); letter-spacing: .04em; color: var(--navy); }
-.rsvp-form input:not([type='radio']), .rsvp-form textarea { font: 400 1rem var(--font-ui); padding: .9rem 1rem; border: 1px solid var(--line); border-radius: 14px; background: var(--bg); color: var(--ink); min-height: 50px; resize: vertical; }
-.rsvp-form input:focus, .rsvp-form textarea:focus { outline: 2px solid var(--gold); outline-offset: 0; background: #fff; }
-.seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.seg label { position: relative; }
-.seg input { position: absolute; opacity: 0; inset: 0; }
-.seg span { display: grid; place-items: center; min-height: 50px; border-radius: 14px; border: 1px solid var(--line); background: var(--bg); font-weight: 600; cursor: pointer; transition: background .25s, color .25s; }
-.seg input:checked + span { background: var(--ink); color: #fff; border-color: var(--ink); }
-.seg input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
-.notice { padding: .9rem 1rem; border-radius: 14px; background: var(--blue); font-size: .92rem; }
+/* Save the date */
+.save-card { display: grid; gap: 1rem; justify-items: center; text-align: center; padding: clamp(2rem, 6vw, 4rem) 1.5rem; }
+.save-date { font: italic 400 clamp(1.8rem, 6vw, 3rem) var(--font-display); color: var(--gold); }
+.save-card .body { max-width: 44ch; }
+.save-actions { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; margin-top: .5rem; }
+.save-actions .pill { align-self: auto; }
 
 .rows { border-bottom: 1px solid rgb(15 31 58 / .15); }
 .row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.5rem .5rem; border-top: 1px solid rgb(15 31 58 / .15); font: 500 clamp(1.5rem, 4.5vw, 2.6rem)/1.15 var(--font-display); color: var(--ink); text-decoration: none; transition: padding .45s var(--ease), color .3s; }

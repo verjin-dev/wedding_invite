@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 const links = [
   ['#day', 'The day'],
   ['#gallery', 'Gallery'],
-  ['#rsvp', 'RSVP'],
+  ['#save', 'Save the date'],
   ['#directions', 'Directions'],
 ];
 

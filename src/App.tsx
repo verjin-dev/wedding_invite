@@ -9,7 +9,7 @@ import Hero from './components/Hero';
 import InvitationCard from './components/InvitationCard';
 import Navigation from './components/Navigation';
 import OurStory from './components/OurStory';
-import RSVP from './components/RSVP';
+import SaveTheDate from './components/SaveTheDate';
 import SlideGate from './components/SlideGate';
 import VenueDirections from './components/VenueDirections';
 
@@ -31,7 +31,7 @@ export default function App() {
             <OurStory />
           </section>
           <Gallery />
-          <RSVP />
+          <SaveTheDate />
           <VenueDirections />
         </main>
         <Footer />

@@ -29,14 +29,14 @@ export const wedding = {
     location: 'Kulappuram',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Christ+the+King+Community+Hall+Kulappuram',
   },
-  // RSVP: set ONE of these to enable it. Digits only with country code, e.g. '919876543210'.
-  rsvp: { whatsappNumber: '919080181819', email: 'verjin2001@gmail.com' },
   gallery: [
     { src: '/images/IMG_2012(1).jpeg', alt: 'Verjin and Jesmi standing together in a sunlit garden' },
+    { src: '/images/groom-portrait.webp', alt: 'Portrait of Verjin in a beige suit with a rose boutonniere' },
+    { src: '/images/bride-portrait.webp', alt: 'Portrait of Jesmi in a cream lace saree holding a bouquet' },
+    { src: '/images/couple-sunset.webp', alt: 'Verjin and Jesmi smiling at sunset, holding red roses' },
+    { src: '/images/couple-drape.webp', alt: 'Jesmi resting her head on Verjin among golden drapes' },
     { src: '/images/IMG_1741.jpeg', alt: 'Verjin and Jesmi sharing a smile, with a bouquet in the foreground' },
     { src: '/images/couple-wedding-3d.webp', alt: 'Stylised portrait of Verjin and Jesmi (illustrative edit)' },
     { src: '/images/couple-candid-3d.webp', alt: 'Stylised candid portrait of Verjin and Jesmi (illustrative edit)' },
-    { src: '/images/ivory-blush-rose-spray.webp', alt: 'Ivory and blush roses' },
-    { src: '/images/cinematic-church-hero.webp', alt: 'Illustrative church scene (not the actual venue)' },
   ],
 } as const;

@@ -1,6 +1,6 @@
 # Verjin & Jesmi — Wedding E-Invitation
 
-React 19 + Vite 6 + TypeScript + Framer Motion + Lucide. Mobile-first blue-watercolor invitation with an envelope opening, countdown (IST), events, gallery with lightbox, RSVP and share.
+React 19 + Vite 6 + TypeScript + Framer Motion + Lucide. Mobile-first blue-watercolor invitation with an envelope opening, countdown (IST), events, gallery with lightbox, save-the-date calendar buttons and share.
 
 ## Run
 
@@ -16,9 +16,9 @@ npm run preview  # serve the build
 Everything lives in `src/data/wedding.ts`: names, date, verse, message, venues, map links, story text, gallery.
 Map links are Google Maps *search* URLs (no invented coordinates) — swap in exact place links when confirmed.
 
-## RSVP
+## Save the date
 
-`wedding.rsvp` has `whatsappNumber` (digits with country code, e.g. `919876543210`) and `email`. While both are empty the form is disabled and labelled "not enabled yet". When set, submitting opens WhatsApp / the mail app with the message prefilled. No backend exists, so responses are **not stored** — they only arrive when the guest presses send.
+`SaveTheDate.tsx` offers a Google Calendar link (ceremony) and a downloadable `.ics` file containing both the ceremony and reception, in IST. Times live in the `events` array at the top of that file.
 
 ## Assets
 
