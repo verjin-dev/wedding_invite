@@ -1,5 +1,6 @@
 import { CalendarPlus, Download } from 'lucide-react';
 import { wedding } from '../data/wedding';
+import { popFrom } from '../lib/confetti';
 import { Card } from './Reveal';
 
 const events = [
@@ -59,11 +60,12 @@ export default function SaveTheDate() {
         <p className="save-date">{wedding.dateLabel}</p>
         <p className="body">Add the ceremony and reception to your calendar so you don’t miss a moment.</p>
         <div className="save-actions">
-          <a className="pill solid" href={googleUrl()} target="_blank" rel="noopener noreferrer">
+          <a className="pill solid" href={googleUrl()} target="_blank" rel="noopener noreferrer"
+            onClick={(e) => popFrom(e.currentTarget)}>
             <CalendarPlus size={16} aria-hidden="true" /> Google Calendar
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
-          <button type="button" className="pill" onClick={downloadIcs}>
+          <button type="button" className="pill" onClick={(e) => { popFrom(e.currentTarget); downloadIcs(); }}>
             <Download size={16} aria-hidden="true" /> Apple / Outlook (.ics)
           </button>
         </div>

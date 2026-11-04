@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { pop } from '../lib/confetti';
 
 type Props = { onOpened: () => void };
 
@@ -31,6 +32,7 @@ export default function SlideGate({ onOpened }: Props) {
     if (open) return;
     setOpen(true);
     onOpened();
+    pop(window.innerWidth / 2, window.innerHeight * 0.75);
   };
 
   return (

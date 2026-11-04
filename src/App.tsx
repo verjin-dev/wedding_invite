@@ -8,6 +8,7 @@ import Gallery from './components/Gallery';
 import Hero from './components/Hero';
 import InvitationCard from './components/InvitationCard';
 import Navigation from './components/Navigation';
+import PopButton from './components/PopButton';
 import OurStory from './components/OurStory';
 import SaveTheDate from './components/SaveTheDate';
 import SlideGate from './components/SlideGate';
@@ -20,6 +21,7 @@ export default function App() {
       <SlideGate onOpened={() => setOpened(true)} />
       <div className="site" inert={!opened}>
         <Navigation />
+        <PopButton />
         <main>
           <Hero ready={opened} />
           <section className="bento" id="day" aria-label="Wedding details">
