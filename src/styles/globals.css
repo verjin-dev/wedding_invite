@@ -196,3 +196,11 @@ button { font: inherit; }
 .pop-btn:hover { transform: translateY(-3px) rotate(-8deg); background: var(--gold); color: #fff; }
 .pop-btn:active { transform: scale(.92); }
 .pop-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* Venue maps */
+.venues { display: grid; gap: 14px; }
+@media (min-width: 860px) { .venues { grid-template-columns: 1fr 1fr; gap: 16px; } }
+.venue { padding: 0; overflow: hidden; display: grid; }
+.venue-map { width: 100%; height: 280px; border: 0; display: block; }
+.venue .row { border-top: 1px solid var(--line); padding: 1.2rem 1.4rem; font-size: clamp(1.3rem, 3.6vw, 1.7rem); }
+.venue .row:hover, .venue .row:focus-visible { padding-left: 1.8rem; }
