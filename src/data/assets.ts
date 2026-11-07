@@ -66,6 +66,12 @@ export const imageAssets = {
     width: 1024, height: 1536, description: 'User-supplied original photograph of Verjin and Jesmi.', sourceType: 'actual photograph',
     alt: 'Verjin and Jesmi sharing a smile', usage: 'Memories gallery',
   },
+  coupleSunset: {
+    id: 'couple-sunset-generated', src: '/images/couple/couple-sunset.webp',
+    srcSet: '/images/couple/couple-sunset.webp 1024w',
+    width: 1024, height: 1536, description: 'Generated sunset portrait of Verjin and Jesmi supplied by the couple.', sourceType: 'generated interpretation',
+    alt: 'Verjin and Jesmi sharing a sunset moment with a bouquet of roses', usage: 'Couple memories gallery',
+  },
   bridePortrait: {
     id: 'bride-portrait-original', src: '/images/people/bride-1024.webp',
     srcSet: '/images/people/bride-480.webp 480w, /images/people/bride-900.webp 900w, /images/people/bride-1024.webp 1024w',

@@ -1,6 +1,6 @@
 # Generated environment imagery
 
-These generated images are architectural or venue illustrations only. They do not depict Verjin, Jesmi, a confirmed reception hall, or a verified exact church interior. Generated previews and originals are separate from user-supplied reference photos.
+This folder contains generated architectural imagery and couple portraits. The images are creative interpretations, not camera photographs or documentary records. Generated previews and originals are kept separate from user-supplied reference photos.
 
 ## Church exterior interpretation
 
@@ -17,3 +17,7 @@ Prompt: create a realistic but generic Indian wedding reception hall interior fo
 ## Countdown rose arch
 
 The rose-arch WebP variants come from the supplied `Wedding_incv` project asset set. It depicts a generic golden-hour garden path beneath white climbing roses and is used only as a decorative countdown background.
+
+## Couple portraits
+
+The portrait files in `portraits/` were supplied for the wedding project. `couple-sunset.webp` is shown in the Couple gallery as a generated sunset portrait. It is identified in the application as a generated image, not an actual camera photograph.

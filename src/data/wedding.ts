@@ -36,6 +36,7 @@ export const weddingConfig = {
   gallery: [
     { assetId: 'couplePortrait', alt: 'Verjin and Jesmi together outdoors', category: 'Couple' as GalleryCategory },
     { assetId: 'coupleMemory', alt: 'Verjin and Jesmi sharing a smile', category: 'Engagement' as GalleryCategory },
+    { assetId: 'coupleSunset', alt: 'Verjin and Jesmi sharing a sunset moment with a bouquet of roses', category: 'Couple' as GalleryCategory },
     { assetId: 'bridePortrait', alt: 'Anto Jesmi DK in her bridal portrait', category: 'Wedding' as GalleryCategory },
     { assetId: 'groomPortrait', alt: 'Verjin V in his wedding portrait', category: 'Wedding' as GalleryCategory },
     { assetId: 'brideFamily', alt: "Anto Jesmi with her family", category: 'Family' as GalleryCategory },
