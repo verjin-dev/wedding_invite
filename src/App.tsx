@@ -4,6 +4,7 @@ import Countdown from './components/Countdown';
 import CoupleSection from './components/CoupleSection';
 import EventCard from './components/EventCard';
 import Footer from './components/Footer';
+import Families from './components/Families';
 import Gallery from './components/Gallery';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
@@ -27,6 +28,7 @@ export default function App() {
       <OurStory />
       <Scripture />
       <CoupleSection />
+      <Families />
       <Gallery />
       <FormalInvite />
       <EventCard kind="ceremony" />
