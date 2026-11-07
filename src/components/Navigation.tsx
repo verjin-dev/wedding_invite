@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const links = [['#story', 'Our story'], ['#couple', 'The couple'], ['#gallery', 'Memories'], ['#invitation', 'Invitation'], ['#ceremony', 'Wedding day'], ['#rsvp', 'RSVP']];
+const links = [['#story', 'Our story'], ['#couple', 'The couple'], ['#gallery', 'Memories'], ['#invitation', 'Invitation'], ['#ceremony', 'Wedding day']];
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);

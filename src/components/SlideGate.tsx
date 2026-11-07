@@ -38,9 +38,11 @@ export default function SlideGate({ onOpened }: Props) {
       {!open && (
         <motion.div
           className="gate" role="dialog" aria-modal="true" aria-label="Wedding invitation"
-          exit={{ y: '-100%' }} transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
+          exit={{ y: '-105%', opacity: .96, scale: .985 }} transition={{ duration: 1.25, ease: [0.76, 0, 0.24, 1] }}
         >
           <div className="gate-scene" aria-hidden="true">
+            <div className="gate-halo"/>
+            <div className="gate-particles">{Array.from({ length: 9 }, (_, index) => <i key={index}/>)}</div>
             <div className="gate-glass"><i/><i/><i/><i/><i/></div>
             <div className="gate-arch gate-arch-outer"/><div className="gate-arch gate-arch-inner"/>
             <motion.div className="gate-cross" initial={{ opacity: 0, scale: .78, y: 12 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 1.7, delay: .8, ease: [0.16, 1, 0.3, 1] }}>{"\u271d"}</motion.div>

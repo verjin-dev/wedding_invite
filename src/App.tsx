@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { MotionConfig } from 'framer-motion';
 import Countdown from './components/Countdown';
 import CoupleSection from './components/CoupleSection';
@@ -12,15 +12,17 @@ import OurStory from './components/OurStory';
 import SaveTheDate from './components/SaveTheDate';
 import VenueDirections from './components/VenueDirections';
 import FormalInvite from './components/FormalInvite';
-import RSVP from './components/RSVP';
 import Scripture from './components/Scripture';
 import ScrollProgress from './components/ScrollProgress';
+import SlideGate from './components/SlideGate';
 
 const Admin = lazy(() => import('./components/Admin'));
 
 export default function App() {
+  const [invitationOpened, setInvitationOpened] = useState(false);
   if (window.location.pathname.startsWith('/admin')) return <Suspense fallback={<main className="block">Loading administration...</main>}><Admin /></Suspense>;
   return <MotionConfig reducedMotion="user"><div className="site">
+    {!invitationOpened && <SlideGate onOpened={() => setInvitationOpened(true)} />}
     <ScrollProgress />
     <Navigation />
     <main>
@@ -36,7 +38,6 @@ export default function App() {
       <Countdown />
       <VenueDirections />
       <SaveTheDate />
-      <RSVP />
     </main>
     <Footer />
   </div></MotionConfig>;
