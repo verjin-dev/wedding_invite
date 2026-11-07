@@ -82,8 +82,18 @@ export default function FormalInvite() {
     if (total && cleared / total > .38) reveal();
   };
 
-  const shareText = `Wedding \u2013 ${weddingConfig.couple.displayNames}, ${weddingConfig.wedding.dateLong} at ${weddingConfig.wedding.ceremonyTime}, ${weddingConfig.ceremony.venue}, ${weddingConfig.ceremony.location}. http://localhost:5174/`;
-  const share = () => window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener,noreferrer');
+  const share = () => {
+    const message = [
+      'With grateful hearts, we joyfully invite you to celebrate the Holy Matrimony of *Verjin & Jesmi*. ❤️',
+      '📅 Monday, 17 May 2027',
+      '🕙 10:00 AM',
+      '📍 Christ the King Church, Iruthayapuram',
+      'Your presence and prayers would mean so much to us.',
+      '💌 View our wedding invitation:',
+      window.location.href,
+    ].join('\n');
+    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+  };
 
   return <section className="invitation-section" id="invitation" aria-labelledby="invite-title">
     <Reveal className="print-invite">
