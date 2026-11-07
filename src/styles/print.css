@@ -1,0 +1,124 @@
+@media print {
+  @page { size: A5 portrait; margin: 10mm; }
+
+  body * { visibility: hidden !important; }
+  .print-invite,
+  .print-invite * { visibility: visible !important; }
+
+  html,
+  body,
+  #root,
+  .site,
+  main {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  .site > .nav,
+  .site > .scroll-progress,
+  .site > footer,
+  main > section:not(.invitation-section) {
+    display: none !important;
+  }
+
+  .invitation-section {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-invite {
+    position: absolute !important;
+    inset: 0 auto auto 50% !important;
+    display: block !important;
+    width: 128mm !important;
+    max-width: 128mm !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: translateX(-50%);
+    border: 0 !important;
+    outline: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #33312f !important;
+  }
+
+  .print-invite::before,
+  .print-invite::after,
+  .print-invite > :not(.invitation-layout),
+  .invitation-layout > :not(.invitation-card-column),
+  .invitation-heading,
+  .invitation-card-column > :not(.scratch-card) {
+    display: none !important;
+  }
+
+  .invitation-layout,
+  .invitation-card-column {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .scratch-card {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    break-inside: avoid;
+  }
+
+  .scratch-card__paper {
+    display: grid !important;
+    min-height: 0 !important;
+    gap: 4mm !important;
+    padding: 9mm !important;
+    border: 1px solid #b18b52 !important;
+    outline: 1px solid rgba(177, 139, 82, .5) !important;
+    outline-offset: -3mm !important;
+    background: #fffefa !important;
+    color: #33312f !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .scratch-card__paper::before,
+  .scratch-card__paper::after {
+    display: block !important;
+    width: 9mm;
+    height: 9mm;
+  }
+
+  .scratch-card__surface,
+  .scratch-accessible,
+  .invite-intro,
+  .invite-actions {
+    display: none !important;
+  }
+
+  .scratch-card__paper .invite-copy {
+    max-width: 100%;
+    font-size: 9pt;
+    line-height: 1.5;
+  }
+
+  .scratch-card__paper .invite-names {
+    font-size: 25pt;
+    line-height: .94;
+  }
+
+  .scratch-card__paper .save-date {
+    font-size: 18pt;
+    line-height: 1.25;
+  }
+
+  .scratch-card__paper .small,
+  .scratch-card__paper > p:not(.save-date):not(.small):not(.invite-names) {
+    font-size: 9pt;
+    line-height: 1.45;
+  }
+}

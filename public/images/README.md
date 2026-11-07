@@ -1,8 +1,8 @@
-# Invitation image assets
+# Public image assets
 
-- `groom-portrait.webp`, `bride-portrait.webp` — portraits used in the couple card and gallery.
-- `IMG_2012(1).jpeg`, `IMG_1741.jpeg`, `couple-sunset.webp`, `couple-drape.webp` — couple photos (hero, gallery).
-- `couple-wedding-3d.webp`, `couple-candid-3d.webp` — stylised edits (illustrative), used in the gallery.
-- `../og-wedding.jpg` — 1200 × 630 social-sharing preview image.
+- `IMG_2012(1).jpeg` and `IMG_1741.jpeg` are the couple's supplied photographs.
+- `couple/` contains responsive WebP derivatives of those supplied photos.
+- `church/` contains the two supplied church exterior reference photographs and responsive derivatives.
+- `generated/` contains clearly labeled generated church exterior/interior interpretations and an illustrative reception hall scene.
 
-Originals and unused renders are kept outside `public/` in `assets/`.
+The earlier generated couple portrait and stylized people images were moved out of `public/`; they are not used on the site. See `src/data/assets.ts` for the in-use manifest and provenance.

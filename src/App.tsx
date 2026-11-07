@@ -1,43 +1,41 @@
+import { lazy, Suspense } from 'react';
 import { MotionConfig } from 'framer-motion';
-import { useState } from 'react';
 import Countdown from './components/Countdown';
 import CoupleSection from './components/CoupleSection';
 import EventCard from './components/EventCard';
 import Footer from './components/Footer';
 import Gallery from './components/Gallery';
 import Hero from './components/Hero';
-import InvitationCard from './components/InvitationCard';
 import Navigation from './components/Navigation';
-import PopButton from './components/PopButton';
 import OurStory from './components/OurStory';
 import SaveTheDate from './components/SaveTheDate';
-import SlideGate from './components/SlideGate';
 import VenueDirections from './components/VenueDirections';
+import FormalInvite from './components/FormalInvite';
+import RSVP from './components/RSVP';
+import Scripture from './components/Scripture';
+import ScrollProgress from './components/ScrollProgress';
+
+const Admin = lazy(() => import('./components/Admin'));
 
 export default function App() {
-  const [opened, setOpened] = useState(false);
-  return (
-    <MotionConfig reducedMotion="user">
-      <SlideGate onOpened={() => setOpened(true)} />
-      <div className="site" inert={!opened}>
-        <Navigation />
-        <PopButton />
-        <main>
-          <Hero ready={opened} />
-          <section className="bento" id="day" aria-label="Wedding details">
-            <InvitationCard />
-            <Countdown />
-            <EventCard kind="ceremony" />
-            <EventCard kind="reception" />
-            <CoupleSection />
-            <OurStory />
-          </section>
-          <Gallery />
-          <SaveTheDate />
-          <VenueDirections />
-        </main>
-        <Footer />
-      </div>
-    </MotionConfig>
-  );
+  if (window.location.pathname.startsWith('/admin')) return <Suspense fallback={<main className="block">Loading administration...</main>}><Admin /></Suspense>;
+  return <MotionConfig reducedMotion="user"><div className="site">
+    <ScrollProgress />
+    <Navigation />
+    <main>
+      <Hero />
+      <OurStory />
+      <Scripture />
+      <CoupleSection />
+      <Gallery />
+      <FormalInvite />
+      <EventCard kind="ceremony" />
+      <EventCard kind="reception" />
+      <Countdown />
+      <VenueDirections />
+      <SaveTheDate />
+      <RSVP />
+    </main>
+    <Footer />
+  </div></MotionConfig>;
 }

@@ -4,3 +4,8 @@ dist/
 .cinematic-reference/
 .claude/
 *.zip
+
+.env
+.env.*
+!.env.example
+

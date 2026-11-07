@@ -1,47 +1,26 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { wedding } from '../data/wedding';
+import { CalendarPlus, Download } from 'lucide-react';
+import { imageAssets } from '../data/assets';
+import { weddingConfig } from '../data/wedding';
 import { useCountdown } from '../hooks/useCountdown';
-import { Card } from './Reveal';
+import { downloadIcs, googleCalendarUrl } from '../lib/calendar';
 
-/** Each digit slides up when its value changes. */
-function Flip({ value }: { value: string }) {
-  return (
-    <span className="flip" aria-hidden="true">
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={value}
-          className="flip-d"
-          initial={{ y: '70%', opacity: 0 }}
-          animate={{ y: '0%', opacity: 1 }}
-          exit={{ y: '-70%', opacity: 0 }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {value}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  );
-}
+const UNITS = [['days', 'Days'], ['hours', 'Hours'], ['minutes', 'Minutes'], ['seconds', 'Seconds']] as const;
 
 export default function Countdown() {
-  const t = useCountdown(wedding.ceremonyStart);
-  const units: [string, number][] = [['Days', t.days], ['Hours', t.hours], ['Minutes', t.minutes], ['Seconds', t.seconds]];
-  return (
-    <Card className="b-count tint" delay={0.1}>
-      <p className="eyebrow">Countdown</p>
-      {t.done ? (
-        <p className="lead">The day has arrived. Thank you for celebrating with us.</p>
-      ) : (
-        <div className="cd-grid" role="timer" aria-label={`${t.days} days, ${t.hours} hours, ${t.minutes} minutes and ${t.seconds} seconds until the ceremony`}>
-          {units.map(([label, v]) => (
-            <div className="cd-box" key={label}>
-              <strong>{Array.from(String(v).padStart(label === 'Days' ? 3 : 2, '0')).map((d, k) => <Flip key={k} value={d} />)}</strong>
-              <span>{label}</span>
-            </div>
-          ))}
-        </div>
-      )}
-      <p className="small">until 10:30 AM, 17 May 2027 · India Standard Time</p>
-    </Card>
-  );
+  const target = `${weddingConfig.wedding.date}T${weddingConfig.wedding.ceremonyTime24}:00+05:30`;
+  const countdown = useCountdown(target);
+  const background = imageAssets.roseArch;
+  return <section className="countdown-band" id="countdown" aria-labelledby="countdown-title">
+    <img className="countdown-band__bg" src={background.src} srcSet={background.srcSet} sizes="100vw" width={background.width} height={background.height} alt="" loading="lazy" decoding="async"/>
+    <div className="countdown-band__veil" aria-hidden="true"/>
+    <div className="countdown-band__inner">
+      <p className="eyebrow light">{weddingConfig.wedding.dateLong}</p>
+      <h2 className="countdown-band__title" id="countdown-title">The day we begin forever</h2>
+      {countdown.phase === 'counting' ? <>
+        <ul className="countdown-band__units" aria-hidden="true">{UNITS.map(([key, label]) => <li key={key}><span className="countdown-band__value">{countdown.ready ? String(countdown[key]).padStart(2, '0') : '--'}</span><span className="countdown-band__label">{label}</span></li>)}</ul>
+        <p className="sr-only" role="timer" aria-live="off">{countdown.ready ? `${countdown.days} days, ${countdown.hours} hours, ${countdown.minutes} minutes and ${countdown.seconds} seconds until the ceremony.` : ''}</p>
+      </> : <p className="countdown-band__done">{countdown.phase === 'today' ? `${weddingConfig.couple.displayNames} are married today. Thanks be to God.` : `${weddingConfig.couple.displayNames} were married on ${weddingConfig.wedding.dateLabel}.`}</p>}
+      <div className="countdown-band__actions"><a className="pill pill--light" href={googleCalendarUrl()} target="_blank" rel="noopener noreferrer"><CalendarPlus size={16} aria-hidden="true"/>Add to Google Calendar</a><button type="button" className="pill pill--light" onClick={downloadIcs}><Download size={16} aria-hidden="true"/>Download .ics</button></div>
+    </div>
+  </section>;
 }

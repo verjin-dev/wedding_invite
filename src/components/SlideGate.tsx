@@ -1,7 +1,6 @@
 import { AnimatePresence, motion, useMotionValue, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { pop } from '../lib/confetti';
 
 type Props = { onOpened: () => void };
 
@@ -32,7 +31,6 @@ export default function SlideGate({ onOpened }: Props) {
     if (open) return;
     setOpen(true);
     onOpened();
-    pop(window.innerWidth / 2, window.innerHeight * 0.75);
   };
 
   return (
@@ -42,16 +40,22 @@ export default function SlideGate({ onOpened }: Props) {
           className="gate" role="dialog" aria-modal="true" aria-label="Wedding invitation"
           exit={{ y: '-100%' }} transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
         >
-          <div className="gate-glow" aria-hidden="true" />
-          <motion.div className="gate-body" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}>
-            <p className="eyebrow">You are invited</p>
+          <div className="gate-scene" aria-hidden="true">
+            <div className="gate-glass"><i/><i/><i/><i/><i/></div>
+            <div className="gate-arch gate-arch-outer"/><div className="gate-arch gate-arch-inner"/>
+            <motion.div className="gate-cross" initial={{ opacity: 0, scale: .78, y: 12 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 1.7, delay: .8, ease: [0.16, 1, 0.3, 1] }}>{"\u271d"}</motion.div>
+            <div className="gate-rays"/><div className="gate-floor"/>
+          </div>
+          <motion.div className="gate-body" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, delay: 1.05 }}>
+            <p className="eyebrow">A sacred beginning</p>
             <h1 className="gate-names"><span>Verjin</span><i>&amp;</i><span>Jesmi</span></h1>
-            <p className="gate-date">17 · 05 · 2027</p>
+            <p className="gate-date">17 MAY 2027</p>
+            <p className="gate-scripture">Genesis 2:24</p>
           </motion.div>
           <motion.div className="gate-bottom" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.8 }}>
             <div className="slider" ref={track}>
               <motion.div className="slider-fill" style={{ width: fill }} aria-hidden="true" />
-              <motion.span className="slider-hint" style={{ opacity: hintOpacity }}>Slide to open</motion.span>
+              <motion.span className="slider-hint" style={{ opacity: hintOpacity }}>Open the invitation</motion.span>
               <motion.button
                 type="button" className="slider-knob" aria-label="Open invitation"
                 drag="x" dragConstraints={{ left: 0, right: max }} dragElastic={0} dragMomentum={false}

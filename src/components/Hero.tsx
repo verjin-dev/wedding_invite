@@ -1,37 +1,31 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
-import { wedding } from '../data/wedding';
+import { imageAssets } from '../data/assets';
+import { weddingConfig } from '../data/wedding';
 
-export default function Hero({ ready }: { ready: boolean }) {
-  const rise = (delay: number) => ({
-    initial: { opacity: 0, y: 30 },
-    animate: ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
-    transition: { duration: 1, delay, ease: [0.16, 1, 0.3, 1] as const },
-  });
-  return (
-    <section className="hero" id="top">
-      <motion.div
-        className="hero-card"
-        initial={{ clipPath: 'inset(8% 8% 8% 8% round 40px)' }}
-        animate={{ clipPath: ready ? 'inset(0% 0% 0% 0% round 32px)' : 'inset(8% 8% 8% 8% round 40px)' }}
-        transition={{ duration: 1.4, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
-      >
-        <motion.img
-          src="/images/IMG_2012(1).jpeg" alt="Verjin and Jesmi standing together in a sunlit garden" decoding="async" fetchPriority="high"
-          initial={{ scale: 1.25 }} animate={{ scale: ready ? 1 : 1.25 }} transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-        />
-        <div className="hero-shade" aria-hidden="true" />
-        <motion.p className="chip hero-chip" {...rise(0.9)}>{wedding.dateShort}</motion.p>
-        <div className="hero-text">
-          <motion.p className="eyebrow light" {...rise(0.8)}>Together with their families</motion.p>
-          <motion.h1 className="hero-names" {...rise(1)}>
-            <span>{wedding.groom}</span>
-            <i>&amp;</i>
-            <span>{wedding.bride}</span>
-          </motion.h1>
-        </div>
-        <motion.a href="#day" className="round-btn hero-down" aria-label="Scroll to the details" {...rise(1.4)}><ArrowDown size={20} /></motion.a>
+export default function Hero() {
+  const exterior = imageAssets.heroChurch;
+  const heroRef = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 76]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -54]);
+  return <section ref={heroRef} className="hero" id="top" aria-labelledby="hero-title">
+    <div className="hero-card">
+      <motion.img className="hero-media" src={exterior.fallback} srcSet={exterior.srcSet} sizes="100vw" width={exterior.width} height={exterior.height} alt={exterior.alt} fetchPriority="high" decoding="async" style={reduceMotion ? undefined : { y: imageY, scale: imageScale }} initial={{ opacity: .8 }} animate={{ opacity: 1 }} transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1] }} />
+      <div className="hero-shade" aria-hidden="true" />
+      <div className="hero-frame" aria-hidden="true"><span/><span/><span/><span/></div>
+      <motion.div className="hero-text" style={reduceMotion ? undefined : { y: textY }}>
+        <motion.p className="eyebrow light" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .8, delay: .25 }}>A Sacred Beginning</motion.p>
+        <motion.div className="hero-rule" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1, delay: .4 }} aria-hidden="true" />
+        <motion.h1 id="hero-title" className="hero-names" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: .45 }}><span>{weddingConfig.couple.groom.displayName}</span><i>&amp;</i><span>{weddingConfig.couple.bride.displayName}</span></motion.h1>
+        <motion.p className="hero-date" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .8, delay: .85 }}>{weddingConfig.wedding.dateLabel.toUpperCase()}</motion.p>
+        <motion.p className="hero-tagline" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .8, delay: 1.05 }}>{weddingConfig.brand.tagline}</motion.p>
       </motion.div>
-    </section>
-  );
+      <p className="hero-image-note">Generated architectural interpretation from the supplied church photographs</p>
+      <a href="#story" className="hero-scroll" aria-label="Scroll to our story"><span>Scroll to discover</span><ArrowDown size={17} aria-hidden="true"/></a>
+    </div>
+  </section>;
 }
