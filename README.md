@@ -30,11 +30,7 @@ The credentials and Supabase values previously shared in conversation are not st
 
 ## Deployment
 
-For Netlify, set build command `npm run build` and publish directory `dist`. Set the two public Supabase variables in the site's environment. Configure the SPA fallback if your Netlify setup does not already provide it:
-
-```
-/* /index.html 200
-```
+`netlify.toml` holds the Netlify build command, publish directory, Node version, and the SPA fallback redirect, so a site linked to this repository needs no build settings entered by hand. Set the two public Supabase variables in the site's environment; they are not in the file because only the dashboard should hold them.
 
 Add the canonical URL, absolute Open Graph image URL, sitemap, and `robots.txt` sitemap declaration after confirming the production domain. The previous `vjwedding.netlify.app` URL was unverified, so it is not published as canonical metadata.
 
