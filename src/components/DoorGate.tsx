@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
+import { imageAssets } from '../data/assets';
 
 type Props = { onOpened: () => void };
 
 function prefersReducedMotion() {
   return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 }
+
+const cutout = imageAssets.coupleCutout;
 
 export default function DoorGate({ onOpened }: Props) {
   const [opening, setOpening] = useState(false);
@@ -49,6 +52,17 @@ export default function DoorGate({ onOpened }: Props) {
 
     <div className="door-stage" aria-hidden="true">
       <div className="door-light" />
+      {/* Clipped to the doorway so the couple can only ever be seen through the opening. */}
+      <div className="door-reveal">
+        <img
+          className="door-couple"
+          srcSet={cutout.srcSet}
+          sizes="(max-width: 760px) 180px, 260px"
+          src={cutout.src}
+          width={cutout.width} height={cutout.height}
+          alt="" decoding="async"
+        />
+      </div>
       <div className="door-leaf door-leaf-left"><span className="door-handle" /></div>
       <div className="door-leaf door-leaf-right"><span className="door-handle" /></div>
       <img

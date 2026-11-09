@@ -22,6 +22,13 @@ export const imageAssets = {
     description: 'Portrait of Verjin and Jesmi before a flowering arch, supplied by the couple.',
     sourceType: 'user-provided reference photo', alt: 'Verjin and Jesmi together before a flowering arch', usage: 'Hero section',
   },
+  coupleCutout: {
+    id: 'couple-cutout', src: '/images/couple/couple-cutout-640.webp',
+    srcSet: '/images/couple/couple-cutout-320.webp 320w, /images/couple/couple-cutout-480.webp 480w, /images/couple/couple-cutout-640.webp 640w',
+    width: 640, height: 609,
+    description: 'Background-removed portrait of Verjin and Jesmi, supplied by the couple.',
+    sourceType: 'user-provided reference photo', alt: '', usage: 'Revealed in the doorway as the opening doors part',
+  },
   heroChurch: {
     id: 'hero-church-generated', src: '/images/generated/church-exterior-from-reference.webp',
     srcSet: '/images/generated/church-exterior-from-reference-640.webp 640w, /images/generated/church-exterior-from-reference-1200.webp 1200w, /images/generated/church-exterior-from-reference.webp 1672w',
