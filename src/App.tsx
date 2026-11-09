@@ -20,7 +20,11 @@ const Admin = lazy(() => import('./components/Admin'));
 
 export default function App() {
   const [invitationOpened, setInvitationOpened] = useState(() => {
-    try { return window.sessionStorage.getItem('vj-wedding-opening-complete') === 'true'; } catch { return false; }
+    // `?intro` replays the envelope opening for previewing, ignoring the once-per-session flag.
+    try {
+      if (new URLSearchParams(window.location.search).has('intro')) return false;
+      return window.sessionStorage.getItem('vj-wedding-opening-complete') === 'true';
+    } catch { return false; }
   });
   if (window.location.pathname.startsWith('/admin')) return <Suspense fallback={<main className="block">Loading administration...</main>}><Admin /></Suspense>;
   return <MotionConfig reducedMotion="user"><div className="site">

@@ -11,6 +11,8 @@ npm run build
 npm run preview
 ```
 
+The envelope opening plays once per browser-tab session; it is suppressed afterwards by the `vj-wedding-opening-complete` session flag, so reloading the same tab goes straight to the site. Add `?intro` to the URL to replay it at any time without clearing storage.
+
 ## Content and image sources
 
 The public site uses the supplied bride and groom portraits, both supplied family photographs, two couple photographs, and both supplied church exterior reference photographs. Family and gallery images preserve their source proportions. Church exterior and interior scenes are generated interpretations based on the supplied references. The rose-arch countdown background is generated. The reception hall is a generic illustration and is labeled as such; it is not a photo of the confirmed venue. Generated originals and generation notes are kept under `assets/generated/originals` and `assets/generated/README.md`.
