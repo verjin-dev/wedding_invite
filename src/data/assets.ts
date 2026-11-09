@@ -10,15 +10,25 @@ export type ImageAsset = {
   sourceType: AssetSource;
   alt: string;
   usage: string;
+  /** Provenance line shown over the image. Only set where guests deserve the disclosure. */
+  note?: string;
 };
 
 export const imageAssets = {
+  heroCouple: {
+    id: 'hero-couple-portrait', src: '/images/couple/hero-couple.jpg',
+    srcSet: '/images/couple/hero-couple-640.webp 640w, /images/couple/hero-couple-1200.webp 1200w, /images/couple/hero-couple-1672.webp 1672w',
+    fallback: '/images/couple/hero-couple.jpg', width: 1672, height: 941,
+    description: 'Portrait of Verjin and Jesmi before a flowering arch, supplied by the couple.',
+    sourceType: 'user-provided reference photo', alt: 'Verjin and Jesmi together before a flowering arch', usage: 'Hero section',
+  },
   heroChurch: {
     id: 'hero-church-generated', src: '/images/generated/church-exterior-from-reference.webp',
     srcSet: '/images/generated/church-exterior-from-reference-640.webp 640w, /images/generated/church-exterior-from-reference-1200.webp 1200w, /images/generated/church-exterior-from-reference.webp 1672w',
     fallback: '/images/generated/church-exterior-from-reference.jpg', width: 1672, height: 941,
     description: 'Golden-hour architectural interpretation generated from two user-supplied church exterior photographs.',
-    sourceType: 'generated interpretation', alt: 'AI-generated golden-hour interpretation of the church exterior, based on the provided reference photos', usage: 'Hero and closing section',
+    sourceType: 'generated interpretation', alt: 'AI-generated golden-hour interpretation of the church exterior, based on the provided reference photos', usage: 'Closing section',
+    note: 'Generated architectural interpretation from the supplied church photographs',
   },
   churchInterior: {
     id: 'church-interior-generated', src: '/images/generated/church-interior-reference.webp',

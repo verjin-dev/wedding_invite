@@ -1,11 +1,12 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
-import { imageAssets } from '../data/assets';
+import { imageAssets, type ImageAsset } from '../data/assets';
 import { weddingConfig } from '../data/wedding';
 
 export default function Hero() {
-  const exterior = imageAssets.heroChurch;
+  // Widened to ImageAsset so the optional provenance note is readable whichever image is used here.
+  const exterior: ImageAsset = imageAssets.heroCouple;
   const heroRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
@@ -24,7 +25,7 @@ export default function Hero() {
         <motion.p className="hero-date" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .8, delay: .85 }}>{weddingConfig.wedding.dateLabel.toUpperCase()}</motion.p>
         <motion.p className="hero-tagline" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .8, delay: 1.05 }}>{weddingConfig.brand.tagline}</motion.p>
       </motion.div>
-      <p className="hero-image-note">Generated architectural interpretation from the supplied church photographs</p>
+      {exterior.note && <p className="hero-image-note">{exterior.note}</p>}
       <a href="#story" className="hero-scroll" aria-label="Scroll to our story"><span>Scroll to discover</span><ArrowDown size={17} aria-hidden="true"/></a>
     </div>
   </section>;
