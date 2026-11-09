@@ -23,6 +23,13 @@ export const imageAssets = {
     sourceType: 'generated interpretation', alt: 'AI-generated portrait of Verjin and Jesmi together before a flowering arch', usage: 'Hero section',
     note: 'AI-generated portrait · not a photograph of the day',
   },
+  monogram: {
+    id: 'vj-monogram', src: '/images/brand/monogram-144.webp',
+    srcSet: '/images/brand/monogram-96.webp 96w, /images/brand/monogram-144.webp 144w, /images/brand/monogram-192.webp 192w',
+    width: 144, height: 133,
+    description: 'Gold V & J monogram with leaf sprays, supplied by the couple.',
+    sourceType: 'user-provided reference photo', alt: '', usage: 'Navigation brand mark',
+  },
   coupleCutout: {
     id: 'couple-cutout', src: '/images/couple/couple-cutout-640.webp',
     srcSet: '/images/couple/couple-cutout-320.webp 320w, /images/couple/couple-cutout-480.webp 480w, /images/couple/couple-cutout-640.webp 640w',

@@ -56,7 +56,7 @@ export default function RSVP() {
         <p className="joy-copy">{sent.attending
           ? `Your place is kept${sent.guests > 1 ? ` for all ${sent.guests} of you` : ''}. It would not be the same day without you, and we cannot wait to celebrate together.`
           : 'Thank you for letting us know. You will be in our hearts and in our prayers on the day, and we hope to celebrate with you very soon.'}</p>
-        <p className="blessing">{weddingConfig.couple.displayNames}</p>
+        <p className="blessing signature">{weddingConfig.couple.displayNames}</p>
       </div>
     </section>;
   }

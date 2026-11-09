@@ -25,7 +25,6 @@ export default function Hero() {
         <motion.p className="hero-date" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .8, delay: .85 }}>{weddingConfig.wedding.dateLabel.toUpperCase()}</motion.p>
         <motion.p className="hero-tagline" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .8, delay: 1.05 }}>{weddingConfig.brand.tagline}</motion.p>
       </motion.div>
-      {exterior.note && <p className="hero-image-note">{exterior.note}</p>}
       <a href="#story" className="hero-scroll" aria-label="Scroll to our story"><span>Scroll to discover</span><ArrowDown size={17} aria-hidden="true"/></a>
     </div>
   </section>;
