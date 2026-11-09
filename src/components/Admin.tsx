@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { Check, Download, Lock, LogOut, MessageSquareQuote, Phone, RefreshCw, Users, X } from 'lucide-react';
+import { Check, Download, Lock, LogOut, MessageSquareQuote, Phone, RefreshCw, Trash2, Users, X } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 type RSVPRow = { id: string; full_name: string; phone: string | null; attendance: string; guest_count: number; message: string | null; created_at: string };
@@ -15,6 +15,7 @@ export default function Admin() {
   const [ready, setReady] = useState(false);
   const [busy, setBusy] = useState(false);
   const [filter, setFilter] = useState<Filter>('all');
+  const [confirming, setConfirming] = useState<string | null>(null);
 
   async function load() {
     if (!supabase) return false;
@@ -36,6 +37,17 @@ export default function Admin() {
   }
 
   async function refresh() { setBusy(true); await load(); setBusy(false); }
+
+  async function remove(id: string) {
+    if (!supabase) return;
+    setBusy(true); setMessage('');
+    // Ask for the deleted row back: without a delete policy RLS matches nothing and still reports success.
+    const { data, error } = await supabase.from('rsvps').delete().eq('id', id).select('id');
+    setBusy(false); setConfirming(null);
+    if (error) { setMessage(error.message); return; }
+    if (!data?.length) { setMessage('That reply was not removed. The database is missing its delete policy — apply the latest migration.'); return; }
+    setRows(current => current.filter(r => r.id !== id));
+  }
 
   async function signOut() {
     await supabase?.auth.signOut();
@@ -104,7 +116,12 @@ export default function Admin() {
       : <div className="admin-table">{shown.map(r => <article className="admin-row" key={r.id}>
         <div className="admin-row-head">
           <h2>{r.full_name}</h2>
-          <span className={`admin-badge ${r.attendance}`}>{r.attendance === 'attending' ? <Check size={13} /> : <X size={13} />}{r.attendance === 'attending' ? 'Attending' : 'Declined'}</span>
+          <div className="admin-row-tools">
+            <span className={`admin-badge ${r.attendance}`}>{r.attendance === 'attending' ? <Check size={13} /> : <X size={13} />}{r.attendance === 'attending' ? 'Attending' : 'Declined'}</span>
+            {confirming === r.id
+              ? <span className="admin-confirm"><button type="button" className="admin-danger" onClick={() => remove(r.id)} disabled={busy}>Delete for good</button><button type="button" onClick={() => setConfirming(null)}>Keep</button></span>
+              : <button type="button" className="admin-remove" aria-label={`Remove the reply from ${r.full_name}`} onClick={() => setConfirming(r.id)}><Trash2 size={14} /></button>}
+          </div>
         </div>
         <div className="admin-meta">
           <span><Users size={14} /> {r.guest_count} {r.guest_count === 1 ? 'guest' : 'guests'}</span>

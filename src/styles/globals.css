@@ -137,13 +137,23 @@
 .admin-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;border:1px solid;font:600 .62rem var(--sans);letter-spacing:.12em;text-transform:uppercase}
 .admin-badge.attending{border-color:rgba(84,118,90,.4);background:rgba(84,118,90,.1);color:#3f6347}
 .admin-badge.declined{border-color:rgba(112,109,100,.35);background:rgba(112,109,100,.08);color:var(--muted)}
+.admin-row-tools{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem}
+.admin-remove{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:border-color .3s,color .3s,background .3s}
+.admin-remove:hover{border-color:rgba(150,74,62,.45);background:rgba(150,74,62,.07);color:#8d4a3e}
+.admin-confirm{display:inline-flex;align-items:center;gap:.4rem}
+.admin-confirm button{min-height:34px;padding:0 .75rem;border:1px solid var(--line);background:transparent;color:var(--muted);font:600 .62rem var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.admin-confirm button:hover{border-color:var(--forest);color:var(--forest)}
+.admin-danger{border-color:rgba(150,74,62,.45)!important;background:rgba(150,74,62,.07)!important;color:#8d4a3e!important}
+.admin-danger:hover{background:#8d4a3e!important;color:var(--paper)!important}
+.admin-danger:disabled{opacity:.5;cursor:default}
+
 .admin-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;color:var(--muted);font-size:.84rem}
 .admin-meta span,.admin-meta a,.admin-meta time{display:inline-flex;align-items:center;gap:.35rem}
 .admin-meta a{color:var(--gold);text-decoration:none}
 .admin-meta a:hover{text-decoration:underline}
 .admin-note{display:flex;gap:.6rem;padding:.8rem .9rem;border-left:2px solid var(--champagne);background:var(--cream);color:var(--ink);font:italic 400 1rem/1.6 var(--serif)}
 .admin-note svg{flex:none;margin-top:.25rem;color:var(--gold)}
-@media(max-width:760px){.admin-actions{width:100%}.admin-actions .pill{flex:1;min-width:0}.admin-stat strong{font-size:1.8rem}.admin-row{padding:1.1rem}.admin-meta a{min-height:44px}}
+@media(max-width:760px){.admin-actions{width:100%}.admin-actions .pill{flex:1;min-width:0}.admin-stat strong{font-size:1.8rem}.admin-row{padding:1.1rem}.admin-meta a{min-height:44px}.admin-remove{width:44px;height:44px}.admin-confirm button{min-height:44px}}
 
 /* Opening doors */
 .gate{position:fixed;inset:0;z-index:100;display:flex;height:100svh;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden;padding:0;background:#efe7d9;isolation:isolate}
