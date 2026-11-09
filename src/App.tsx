@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense } from 'react';
 import { MotionConfig } from 'framer-motion';
 import Countdown from './components/Countdown';
 import CoupleSection from './components/CoupleSection';
@@ -14,21 +14,12 @@ import VenueDirections from './components/VenueDirections';
 import FormalInvite from './components/FormalInvite';
 import Scripture from './components/Scripture';
 import ScrollProgress from './components/ScrollProgress';
-import SlideGate from './components/SlideGate';
 
 const Admin = lazy(() => import('./components/Admin'));
 
 export default function App() {
-  const [invitationOpened, setInvitationOpened] = useState(() => {
-    // `?intro` replays the envelope opening for previewing, ignoring the once-per-session flag.
-    try {
-      if (new URLSearchParams(window.location.search).has('intro')) return false;
-      return window.sessionStorage.getItem('vj-wedding-opening-complete') === 'true';
-    } catch { return false; }
-  });
   if (window.location.pathname.startsWith('/admin')) return <Suspense fallback={<main className="block">Loading administration...</main>}><Admin /></Suspense>;
   return <MotionConfig reducedMotion="user"><div className="site">
-    {!invitationOpened && <SlideGate onOpened={() => setInvitationOpened(true)} />}
     <ScrollProgress />
     <Navigation />
     <main>
