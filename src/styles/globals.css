@@ -178,3 +178,22 @@
 @media(prefers-reduced-motion:reduce){.door-leaf,.door-light{transition:none}.gate.is-opening .door-stage{animation:none}}
 /* Short and landscape screens: trim the chrome so the archway keeps its size. */
 @media(max-height:560px){.opening-heading{gap:.15rem;padding-top:.35rem}.opening-line{font-size:clamp(1.05rem,3.4vh,1.4rem)}.opening-tap{display:none}.opening-controls{gap:.25rem;padding-bottom:.4rem}.door-stage{width:min(92vw,520px,calc((100svh - 190px) * 1.0283))}}
+/* RSVP reply celebration */
+.rsvp-joy{position:relative;display:grid;justify-items:center;width:min(100%,640px);gap:.55rem;margin:0 auto;overflow:hidden;padding:clamp(2.2rem,6vw,3.4rem) clamp(1.3rem,5vw,3rem);text-align:center;animation:joy-rise .9s cubic-bezier(.16,1,.3,1) both}
+.rsvp-joy.is-joy{border-top:2px solid var(--gold);background:linear-gradient(180deg,#fffdf6,#fbf5e7)}
+.rsvp-joy.is-warm{border-top:2px solid var(--sage);background:linear-gradient(180deg,#fcfbf7,#f2f0e9)}
+.joy-mark{display:grid;place-items:center;width:56px;height:56px;border:1px solid var(--champagne);border-radius:50%;color:var(--gold);font:300 1.6rem/1 var(--serif);animation:joy-seal 1.1s cubic-bezier(.16,1,.3,1) both}
+.rsvp-joy.is-joy .joy-mark{animation:joy-seal 1.1s cubic-bezier(.16,1,.3,1) both,joy-glow 2.6s ease-in-out 1.1s infinite}
+.rsvp-joy.is-warm .joy-mark{border-color:rgba(135,145,123,.5);color:var(--sage)}
+.joy-title{max-width:18ch;color:var(--forest);font:italic 400 clamp(1.9rem,5.5vw,2.9rem)/1.15 var(--serif);letter-spacing:-.02em;animation:joy-rise 1s cubic-bezier(.16,1,.3,1) .12s both}
+.joy-copy{max-width:46ch;color:var(--muted);font:400 .96rem/1.8 var(--sans);animation:joy-rise 1s cubic-bezier(.16,1,.3,1) .22s both}
+.rsvp-joy .blessing{margin-top:.5rem;animation:joy-rise 1s cubic-bezier(.16,1,.3,1) .32s both}
+.joy-petals{position:absolute;inset:0;pointer-events:none}
+.joy-petals span{position:absolute;top:-8%;left:calc(var(--i) * 11.5% + 3%);width:9px;height:12px;border-radius:60% 0 60% 0;opacity:0;animation:joy-fall 7s linear infinite;animation-delay:calc(var(--i) * -.85s)}
+.rsvp-joy.is-joy .joy-petals span{background:rgba(216,193,154,.85)}
+.rsvp-joy.is-warm .joy-petals span{background:rgba(160,172,150,.6)}
+@keyframes joy-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes joy-seal{0%{opacity:0;transform:scale(.4) rotate(-25deg)}60%{opacity:1;transform:scale(1.12) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes joy-glow{0%,100%{box-shadow:0 0 0 0 rgba(177,139,82,0)}50%{box-shadow:0 0 0 10px rgba(177,139,82,.09)}}
+@keyframes joy-fall{0%{opacity:0;transform:translateY(0) rotate(0)}10%{opacity:1}90%{opacity:1}100%{opacity:0;transform:translateY(420px) translateX(26px) rotate(220deg)}}
+@media(prefers-reduced-motion:reduce){.rsvp-joy,.joy-mark,.joy-title,.joy-copy,.rsvp-joy .blessing{animation:none}.joy-petals{display:none}}
