@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import { CalendarDays, Printer, Share2 } from 'lucide-react';
 import { weddingConfig } from '../data/wedding';
+import { imageAssets } from '../data/assets';
 import { downloadIcs, googleCalendarUrl } from '../lib/calendar';
 import Reveal from './Reveal';
 
@@ -9,6 +10,18 @@ export default function FormalInvite() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const surfaceRef = useRef<HTMLDivElement>(null);
   const scratchedRef = useRef(false);
+  const markRef = useRef<HTMLImageElement | null>(null);
+  const [markReady, setMarkReady] = useState(false);
+
+  useEffect(() => {
+    const image = new Image();
+    image.src = imageAssets.monogram.src;
+    markRef.current = image;
+    if (image.complete && image.naturalWidth) { setMarkReady(true); return; }
+    const onLoad = () => setMarkReady(true);
+    image.addEventListener('load', onLoad);
+    return () => image.removeEventListener('load', onLoad);
+  }, []);
 
   const paintCover = useCallback(() => {
     const canvas = canvasRef.current;
@@ -32,16 +45,21 @@ export default function FormalInvite() {
     context.strokeStyle = 'rgba(255, 255, 255, .72)';
     context.strokeRect(25, 25, rect.width - 50, rect.height - 50);
 
-    context.textAlign = 'center'; context.textBaseline = 'middle'; context.fillStyle = '#34483d';
-    context.font = 'italic 38px "Cormorant Garamond", Georgia, serif';
-    context.fillText('V  &  J', rect.width / 2, rect.height / 2 - 30);
+    context.textAlign = 'center'; context.textBaseline = 'middle';
+    // The monogram is artwork now; it paints as soon as it decodes, via markReady.
+    const mark = markRef.current;
+    if (mark && mark.complete && mark.naturalWidth) {
+      const height = 68;
+      const width = height * (mark.naturalWidth / mark.naturalHeight);
+      context.drawImage(mark, rect.width / 2 - width / 2, rect.height / 2 - 40 - height / 2, width, height);
+    }
     context.beginPath(); context.moveTo(rect.width / 2 - 38, rect.height / 2 + 4); context.lineTo(rect.width / 2 + 38, rect.height / 2 + 4);
     context.strokeStyle = 'rgba(128, 101, 58, .68)'; context.stroke();
     context.fillStyle = '#5c503e'; context.font = '600 9px Inter, sans-serif';
     context.fillText('GENTLY SCRATCH TO REVEAL', rect.width / 2, rect.height / 2 + 30);
     context.fillStyle = '#927747'; context.font = '18px Georgia, serif'; context.fillText('\u2726', rect.width / 2, rect.height / 2 + 58);
     scratchedRef.current = false;
-  }, []);
+  }, [markReady]);
 
   useEffect(() => {
     const surface = surfaceRef.current;
@@ -103,7 +121,7 @@ export default function FormalInvite() {
         <p className="eyebrow">The Wedding Invitation</p>
         <h2 id="invite-title" className="invitation-title">A day to hold in your heart</h2>
         <p className="invite-intro">Scarcely able to contain the joy, we invite you to share our day.</p>
-        <div className="invitation-ornament" aria-hidden="true"><span>V</span><i>&amp;</i><span>J</span></div>
+        <div className="invitation-ornament" aria-hidden="true"><img src={imageAssets.monogram.src} srcSet={imageAssets.monogram.srcSet} sizes="72px" width={imageAssets.monogram.width} height={imageAssets.monogram.height} alt="" decoding="async" /></div>
       </header>
 
       <div className="invitation-card-column">
