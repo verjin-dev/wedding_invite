@@ -31,7 +31,7 @@ export const weddingConfig = {
   },
   profiles: {
     groomIntroduction: 'BE Computer Science · Gen AI Engineer at TCS',
-    brideIntroduction: 'BA, MBA · Accountant at St. George CBSE School',
+    brideIntroduction: 'B.Sc Maths, MBA · Accountant at St George Galaxy Eco School',
   },
   gallery: [
     { assetId: 'couplePortrait', alt: 'Verjin and Jesmi together outdoors', category: 'Couple' as GalleryCategory },

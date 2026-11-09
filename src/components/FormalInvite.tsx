@@ -84,7 +84,7 @@ export default function FormalInvite() {
 
   const share = () => {
     const message = [
-      'With grateful hearts, we joyfully invite you to celebrate the Holy Matrimony of *Verjin & Jesmi*. ❤️',
+      'With grateful hearts, we joyfully invite you to celebrate the Wedding of *Verjin & Jesmi*. ❤️',
       '📅 Monday, 17 May 2027',
       '🕙 10:00 AM',
       '📍 Christ the King Church, Iruthayapuram',
