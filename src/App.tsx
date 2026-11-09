@@ -12,6 +12,7 @@ import OurStory from './components/OurStory';
 import SaveTheDate from './components/SaveTheDate';
 import VenueDirections from './components/VenueDirections';
 import FormalInvite from './components/FormalInvite';
+import RSVP from './components/RSVP';
 import Scripture from './components/Scripture';
 import ScrollProgress from './components/ScrollProgress';
 
@@ -34,6 +35,7 @@ export default function App() {
       <EventCard kind="reception" />
       <Countdown />
       <VenueDirections />
+      <RSVP />
       <SaveTheDate />
     </main>
     <Footer />
