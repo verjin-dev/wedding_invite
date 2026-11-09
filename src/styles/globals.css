@@ -146,6 +146,7 @@
 .admin-danger{border-color:rgba(150,74,62,.45)!important;background:rgba(150,74,62,.07)!important;color:#8d4a3e!important}
 .admin-danger:hover{background:#8d4a3e!important;color:var(--paper)!important}
 .admin-danger:disabled{opacity:.5;cursor:default}
+.admin-row-error{padding:.6rem .8rem;border-left:2px solid #8d4a3e;background:rgba(150,74,62,.07);color:#8d4a3e;font:400 .82rem/1.45 var(--sans)}
 
 .admin-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;color:var(--muted);font-size:.84rem}
 .admin-meta span,.admin-meta a,.admin-meta time{display:inline-flex;align-items:center;gap:.35rem}

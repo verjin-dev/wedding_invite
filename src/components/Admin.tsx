@@ -16,6 +16,7 @@ export default function Admin() {
   const [busy, setBusy] = useState(false);
   const [filter, setFilter] = useState<Filter>('all');
   const [confirming, setConfirming] = useState<string | null>(null);
+  const [rowError, setRowError] = useState<{ id: string; text: string } | null>(null);
 
   async function load() {
     if (!supabase) return false;
@@ -40,12 +41,13 @@ export default function Admin() {
 
   async function remove(id: string) {
     if (!supabase) return;
-    setBusy(true); setMessage('');
+    setBusy(true); setRowError(null);
     // Ask for the deleted row back: without a delete policy RLS matches nothing and still reports success.
     const { data, error } = await supabase.from('rsvps').delete().eq('id', id).select('id');
     setBusy(false); setConfirming(null);
-    if (error) { setMessage(error.message); return; }
-    if (!data?.length) { setMessage('That reply was not removed. The database is missing its delete policy — apply the latest migration.'); return; }
+    // Report on the row itself — a message at the top of the page is off-screen when the list is long.
+    if (error) { setRowError({ id, text: error.message }); return; }
+    if (!data?.length) { setRowError({ id, text: 'Not removed. The database is missing its delete policy — run the latest migration in Supabase.' }); return; }
     setRows(current => current.filter(r => r.id !== id));
   }
 
@@ -129,6 +131,7 @@ export default function Admin() {
           <time dateTime={r.created_at}>{new Date(r.created_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}</time>
         </div>
         {r.message && <blockquote className="admin-note"><MessageSquareQuote size={15} aria-hidden="true" />{r.message}</blockquote>}
+        {rowError?.id === r.id && <p className="admin-row-error" role="status" aria-live="polite">{rowError.text}</p>}
       </article>)}</div>}
   </main>;
 }
