@@ -225,3 +225,15 @@
 @keyframes dove-flap{from{transform:scaleY(1) skewX(0)}to{transform:scaleY(-.55) skewX(-8deg)}}
 @media(max-width:700px){.hero-petals span:nth-child(n+9){display:none}}
 @media(prefers-reduced-motion:reduce){.hero-petals,.doves{display:none}.rings-spark{animation:none}}
+/* More flourishes: scripture stars, a drawn heart, swinging bells, clinking flutes */
+.scripture{position:relative;overflow:hidden}.scripture-inner{position:relative;z-index:1}.stars{position:absolute;inset:0;pointer-events:none}.stars span{position:absolute;left:calc(mod(var(--i) * 37,96) * 1% + 2%);top:calc(mod(var(--i) * 53,90) * 1% + 5%);width:calc(7px + mod(var(--i),3) * 4px);aspect-ratio:1;background:var(--champagne);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);opacity:.3;animation:star-twinkle calc(2.8s + mod(var(--i),4) * .9s) ease-in-out infinite;animation-delay:calc(var(--i) * -.7s)}
+@keyframes star-twinkle{0%,100%{opacity:.12;transform:scale(.6) rotate(0)}50%{opacity:.8;transform:scale(1.15) rotate(45deg)}}
+.heart-flourish{display:block;width:38px;height:auto;margin:0 auto;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;animation:heart-beat 2.4s ease-in-out 2s infinite}
+@keyframes heart-beat{0%,36%,100%{transform:scale(1)}12%{transform:scale(1.16)}24%{transform:scale(1.04)}30%{transform:scale(1.12)}}
+.bells,.glasses{display:block;width:74px;height:auto;overflow:visible;stroke:var(--gold);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.bell{transform-origin:0 0;animation:bell-swing 2.2s ease-in-out infinite alternate}.bell--second{animation-delay:-.55s}.bell circle{fill:var(--gold);stroke:none}
+@keyframes bell-swing{from{transform:rotate(20deg)}to{transform:rotate(-20deg)}}
+.flute{transform-origin:0 40px;animation:flute-clink 3.6s ease-in-out infinite}.flute--second{animation-name:flute-clink-back}.bubble{fill:var(--gold);stroke:none;opacity:0;animation:bubble-rise 2.2s ease-in infinite}.bubble--late{animation-delay:-1.1s}.clink{fill:var(--gold);stroke:none;transform-box:fill-box;transform-origin:center;opacity:0;animation:clink-spark 3.6s ease-out infinite}
+@keyframes flute-clink{0%,45%,100%{transform:rotate(-7deg)}62%,70%{transform:rotate(10deg)}}
+@keyframes flute-clink-back{0%,45%,100%{transform:rotate(7deg)}62%,70%{transform:rotate(-10deg)}}
+@keyframes bubble-rise{0%{opacity:0;transform:translateY(0)}25%{opacity:.9}100%{opacity:0;transform:translateY(-12px)}}
+@keyframes clink-spark{0%,60%,100%{opacity:0;transform:scale(.3)}66%{opacity:1;transform:scale(1.15) rotate(20deg)}82%{opacity:0;transform:scale(.8) rotate(45deg)}}
