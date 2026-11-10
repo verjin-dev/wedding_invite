@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { imageAssets, type ImageAsset } from '../data/assets';
 import { weddingConfig } from '../data/wedding';
+import { HeroPetals } from './Flourishes';
 
 export default function Hero() {
   // Widened to ImageAsset so the optional provenance note is readable whichever image is used here.
@@ -17,6 +18,7 @@ export default function Hero() {
     <div className="hero-card">
       <motion.img className="hero-media" src={exterior.fallback} srcSet={exterior.srcSet} sizes="100vw" width={exterior.width} height={exterior.height} alt={exterior.alt} fetchPriority="high" decoding="async" style={reduceMotion ? undefined : { y: imageY, scale: imageScale }} initial={{ opacity: .8 }} animate={{ opacity: 1 }} transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1] }} />
       <div className="hero-shade" aria-hidden="true" />
+      <HeroPetals />
       <div className="hero-frame" aria-hidden="true"><span/><span/><span/><span/></div>
       <motion.div className="hero-text" style={reduceMotion ? undefined : { y: textY }}>
         <motion.p className="eyebrow light" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .8, delay: .25 }}>A Sacred Beginning</motion.p>
