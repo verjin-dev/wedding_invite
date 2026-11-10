@@ -6,9 +6,9 @@ const start = new Date(`${weddingConfig.wedding.date}T${weddingConfig.wedding.ce
 const stamp = (date: Date) => date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
 const startStamp = stamp(start);
 
-/** Creates a Google Calendar draft using only the confirmed start time. */
+/** Creates a Google Calendar draft. Google ignores `dates` without an end, so the start is repeated rather than guessing one. */
 export function googleCalendarUrl() {
-  const params = new URLSearchParams({ action: 'TEMPLATE', text: title, dates: startStamp, details: weddingConfig.brand.tagline, location, ctz: weddingConfig.wedding.timezone });
+  const params = new URLSearchParams({ action: 'TEMPLATE', text: title, dates: `${startStamp}/${startStamp}`, details: weddingConfig.brand.tagline, location, ctz: weddingConfig.wedding.timezone });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
 

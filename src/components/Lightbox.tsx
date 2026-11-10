@@ -7,6 +7,16 @@ type Props = { images: readonly Img[]; index: number | null; onClose: () => void
 
 export default function Lightbox({ images, index, onClose, onChange }: Props) {
   const touchX = useRef<number | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const open = index !== null;
+
+  // Move focus into the viewer while it is open and hand it back to the tile that opened it.
+  useEffect(() => {
+    if (!open) return;
+    const opener = document.activeElement as HTMLElement | null;
+    dialogRef.current?.querySelector<HTMLElement>('.lb-close')?.focus();
+    return () => opener?.focus();
+  }, [open]);
 
   useEffect(() => {
     if (index === null) return;
@@ -15,6 +25,13 @@ export default function Lightbox({ images, index, onClose, onChange }: Props) {
       if (e.key === 'Escape') onClose();
       else if (e.key === 'ArrowRight') onChange((index + 1) % n);
       else if (e.key === 'ArrowLeft') onChange((index - 1 + n) % n);
+      else if (e.key === 'Tab') {
+        const buttons = Array.from(dialogRef.current?.querySelectorAll<HTMLElement>('button') ?? []);
+        if (!buttons.length) return;
+        const at = buttons.indexOf(document.activeElement as HTMLElement);
+        e.preventDefault();
+        buttons[(at + (e.shiftKey ? -1 : 1) + buttons.length) % buttons.length].focus();
+      }
     };
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
@@ -27,7 +44,7 @@ export default function Lightbox({ images, index, onClose, onChange }: Props) {
     <AnimatePresence>
       {index !== null && (
         <motion.div
-          className="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer"
+          ref={dialogRef} className="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
           onClick={onClose}
           onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}

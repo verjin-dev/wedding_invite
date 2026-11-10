@@ -57,8 +57,11 @@ export default function Admin() {
   }
 
   const csv = () => {
-    const content = ['Name,Phone,Attendance,Guests,Message,Submitted', ...rows.map(r => [r.full_name, r.phone ?? '', r.attendance, r.guest_count, r.message ?? '', r.created_at].map(x => '"' + String(x).replaceAll('"', '""') + '"').join(','))].join('\n');
-    const url = URL.createObjectURL(new Blob([content], { type: 'text/csv' }));
+    // Guests type these values; a leading = + - @ would run as a formula when the sheet is opened. Plain phone numbers (+91 …) are left alone.
+    const cell = (x: string | number) => { const s = String(x); return '"' + (/^[=+\-@\t\r]/.test(s) && !/^[+-]?[\d\s().-]+$/.test(s) ? "'" + s : s).replaceAll('"', '""') + '"'; };
+    const content = ['Name,Phone,Attendance,Guests,Message,Submitted', ...rows.map(r => [r.full_name, r.phone ?? '', r.attendance, r.guest_count, r.message ?? '', r.created_at].map(cell).join(','))].join('\r\n');
+    // The BOM makes Excel read the file as UTF-8, so names in Tamil or Malayalam survive.
+    const url = URL.createObjectURL(new Blob(['\ufeff', content], { type: 'text/csv;charset=utf-8' }));
     const link = document.createElement('a');
     link.href = url; link.download = 'wedding-rsvps.csv'; link.click();
     URL.revokeObjectURL(url);

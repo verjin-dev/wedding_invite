@@ -13,12 +13,17 @@ export default function DoorGate({ onOpened }: Props) {
   const [opening, setOpening] = useState(false);
   const [announce, setAnnounce] = useState('');
   const timers = useRef<number[]>([]);
+  const gateRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    // The page behind is rendered but covered; keep keyboard and screen-reader focus out of it.
+    const behind = Array.from(gateRef.current?.parentElement?.children ?? []).filter(el => el !== gateRef.current);
+    behind.forEach(el => el.setAttribute('inert', ''));
     return () => {
       document.body.style.overflow = previousOverflow;
+      behind.forEach(el => el.removeAttribute('inert'));
       timers.current.forEach(clearTimeout);
     };
   }, []);
@@ -42,7 +47,7 @@ export default function DoorGate({ onOpened }: Props) {
     complete();
   };
 
-  return <div className={`gate${opening ? ' is-opening' : ''}`}>
+  return <div ref={gateRef} className={`gate${opening ? ' is-opening' : ''}`}>
     <div className="gate-sky" aria-hidden="true" />
 
     <header className="opening-heading">
