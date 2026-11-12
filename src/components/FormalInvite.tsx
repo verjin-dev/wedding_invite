@@ -56,7 +56,7 @@ export default function FormalInvite() {
     context.beginPath(); context.moveTo(rect.width / 2 - 38, rect.height / 2 + 4); context.lineTo(rect.width / 2 + 38, rect.height / 2 + 4);
     context.strokeStyle = 'rgba(128, 101, 58, .68)'; context.stroke();
     context.fillStyle = '#5c503e'; context.font = '600 9px Inter, sans-serif';
-    context.fillText('GENTLY SCRATCH TO REVEAL', rect.width / 2, rect.height / 2 + 30);
+    context.fillText('SCRATCH SIDE TO SIDE TO REVEAL', rect.width / 2, rect.height / 2 + 30);
     context.fillStyle = '#927747'; context.font = '18px Georgia, serif'; context.fillText('\u2726', rect.width / 2, rect.height / 2 + 58);
     scratchedRef.current = false;
   }, [markReady]);
@@ -82,13 +82,14 @@ export default function FormalInvite() {
     const x = event.clientX - rect.left; const y = event.clientY - rect.top;
     const point = canvas.dataset.previousPoint;
     const previous = point ? point.split(',').map(Number) : null;
-    context.globalCompositeOperation = 'destination-out'; context.lineWidth = 38; context.lineCap = 'round'; context.lineJoin = 'round';
+    // A fingertip hides what it scratches, so touch gets a wider stroke than the mouse.
+    context.globalCompositeOperation = 'destination-out'; context.lineWidth = event.pointerType === 'touch' ? 64 : 38; context.lineCap = 'round'; context.lineJoin = 'round';
     context.beginPath(); context.moveTo(previous?.[0] ?? x, previous?.[1] ?? y); context.lineTo(x, y); context.stroke();
     context.globalCompositeOperation = 'source-over'; canvas.dataset.previousPoint = `${x},${y}`;
     scratchedRef.current = true;
   };
 
-  const finishScratch = () => {
+  const finishScratch = (event: ReactPointerEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     const context = canvas?.getContext('2d');
     if (!canvas || !context || !scratchedRef.current) return;
@@ -97,7 +98,8 @@ export default function FormalInvite() {
     let total = 0; let cleared = 0;
     for (let index = 3; index < pixels.length; index += stride) { total++; if (pixels[index] < 24) cleared++; }
     canvas.dataset.previousPoint = '';
-    if (total && cleared / total > .38) reveal();
+    // On a phone the card is taller than the screen, and vertical drags scroll the page (touch-action: pan-y), so a couple of sideways swipes must be enough.
+    if (total && cleared / total > (event.pointerType === 'touch' ? .12 : .3)) reveal();
   };
 
   const share = () => {
@@ -138,7 +140,7 @@ export default function FormalInvite() {
         </div>
         {!revealed && <div className="scratch-card__surface" ref={surfaceRef}>
           <canvas ref={canvasRef} className="scratch-cover" onPointerDown={event => { event.currentTarget.setPointerCapture(event.pointerId); event.currentTarget.dataset.previousPoint = ''; erase(event); }} onPointerMove={event => { if (event.buttons !== 0 || event.pointerType === 'touch') erase(event); }} onPointerUp={finishScratch} onPointerCancel={finishScratch} aria-hidden="true"/>
-          <span className="sr-only">Scratch the gold surface with a mouse or finger. Or use the reveal invitation button below.</span>
+          <span className="sr-only">Scratch the gold surface from side to side with a mouse or finger. Or use the reveal invitation button below.</span>
         </div>}
       </div>
 
