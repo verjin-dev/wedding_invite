@@ -103,9 +103,9 @@ export default function FormalInvite() {
   const share = () => {
     const message = [
       'With grateful hearts, we joyfully invite you to celebrate the Wedding of *Verjin & Jesmi*. ❤️',
-      '📅 Monday, 17 May 2027',
-      '🕙 10:00 AM',
-      '📍 Christ the King Church, Iruthayapuram',
+      `📅 ${weddingConfig.wedding.dateLong}`,
+      `🕥 ${weddingConfig.wedding.ceremonyTime}`,
+      `📍 ${weddingConfig.ceremony.venue}, ${weddingConfig.ceremony.location}`,
       'Your presence and prayers would mean so much to us.',
       '💌 View our wedding invitation:',
       window.location.href,
@@ -131,6 +131,7 @@ export default function FormalInvite() {
           <div className="paper-rule" aria-hidden="true"><span>✦</span></div>
           <div className="invite-copy">{weddingConfig.invitation.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div>
           <p className="invite-names"><span className="invite-name">{weddingConfig.couple.groom.name}</span><span className="invite-amp">&amp;</span><span className="invite-name">{weddingConfig.couple.bride.name}</span></p>
+          <p className="paper-parents"><span>{weddingConfig.couple.groom.displayName}, son of {weddingConfig.couple.groom.parents}</span><span>{weddingConfig.couple.bride.displayName}, daughter of {weddingConfig.couple.bride.parents}</span></p>
           <p className="save-date"><span>{weddingConfig.wedding.dateLong}</span><span>{weddingConfig.wedding.ceremonyTime}</span></p>
           <p className="paper-venue">{weddingConfig.ceremony.venue}<br/>{weddingConfig.ceremony.location} {"\u00b7"} {weddingConfig.ceremony.diocese}</p>
           <p className="paper-reception"><span>Reception</span>{weddingConfig.reception.venue}, {weddingConfig.reception.location}<br/><small>{weddingConfig.reception.time ? weddingConfig.reception.time : 'Timing to be announced'}</small></p>

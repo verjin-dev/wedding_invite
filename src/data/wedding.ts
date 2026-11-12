@@ -3,18 +3,18 @@ export type GalleryCategory = 'Couple' | 'Engagement' | 'Family' | 'Wedding' | '
 export const weddingConfig = {
   brand: { name: 'VJ Wedding', title: 'A Sacred Beginning', tagline: 'A Sacred Promise. A Lifetime of Love.' },
   couple: {
-    groom: { name: 'Verjin V', displayName: 'Verjin', portrait: '/images/IMG_2012(1).jpeg', position: '35%' },
-    bride: { name: 'Anto Jesmi DK', displayName: 'Jesmi', portrait: '/images/IMG_2012(1).jpeg', position: '68%' },
+    groom: { name: 'Verjin V', displayName: 'Verjin', portrait: '/images/IMG_2012(1).jpeg', position: '35%', parents: 'Vargheese M & Lailakumari N' },
+    bride: { name: 'Anto Jesmi DK', displayName: 'Jesmi', portrait: '/images/IMG_2012(1).jpeg', position: '68%', parents: 'Devaraj A & Kala' },
     displayNames: 'Verjin & Jesmi',
   },
-  wedding: { date: '2027-05-17', dateLabel: '17 May 2027', dateLong: 'Monday, 17 May 2027', ceremonyTime: '10:00 AM', ceremonyTime24: '10:00', timezone: 'Asia/Kolkata' },
+  wedding: { date: '2027-05-17', dateLabel: '17 May 2027', dateLong: 'Monday, 17 May 2027', ceremonyTime: '10:30 AM', ceremonyTime24: '10:30', timezone: 'Asia/Kolkata' },
   ceremony: {
     title: 'Wedding', venue: 'Christ the King Church', location: 'Iruthayapuram', diocese: 'Kuzhithurai Diocese',
-    mapUrl: null as string | null, image: 'churchInterior', imageAlt: 'Generated interpretation of the altar and mosaic panels in the supplied church interior reference',
+    mapUrl: 'https://maps.app.goo.gl/8n2qAGP3iD5eYdadA' as string | null, image: 'churchInterior', imageAlt: 'Generated interpretation of the altar and mosaic panels in the supplied church interior reference',
   },
   reception: {
     title: 'Wedding Reception', venue: 'Christ the King Community Hall', location: 'Iruthayapuram',
-    time: null as string | null, mapUrl: null as string | null, image: 'receptionHall',
+    time: '5:30 PM' as string | null, mapUrl: 'https://maps.app.goo.gl/m8UKbJJW82Tsv3TL7' as string | null, image: 'receptionHall',
     imageAlt: 'Illustrative generated wedding reception hall; not a photograph of the confirmed venue',
   },
   scripture: { reference: 'Genesis 2:24', translation: null as string | null, text: 'And the two shall become one flesh.' },
