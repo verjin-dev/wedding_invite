@@ -53,11 +53,11 @@ export const imageAssets = {
     sourceType: 'generated interpretation', alt: 'Generated interpretation of the church interior and mosaic altar based on the supplied reference', usage: 'Wedding ceremony section',
   },
   receptionHall: {
-    id: 'reception-hall-illustrative', src: '/images/generated/reception-hall-illustrative.webp',
-    srcSet: '/images/generated/reception-hall-illustrative-640.webp 640w, /images/generated/reception-hall-illustrative-1200.webp 1200w, /images/generated/reception-hall-illustrative.webp 1672w',
-    fallback: '/images/generated/reception-hall-illustrative.jpg', width: 1672, height: 941,
-    description: 'Generic generated community reception hall for illustration only; it is not the confirmed venue.',
-    sourceType: 'generated interpretation', alt: 'Illustrative wedding reception hall; not a photograph of the confirmed community hall', usage: 'Reception section',
+    id: 'reception-hall', src: '/images/reception-hall.webp',
+    srcSet: '/images/reception-hall-640.webp 640w, /images/reception-hall-1200.webp 1200w, /images/reception-hall.webp 1448w',
+    fallback: '/images/reception-hall.jpg', width: 1448, height: 1086,
+    description: 'The reception hall, as supplied by the couple.',
+    sourceType: 'actual photograph', alt: 'Christ the King Community Hall set for the wedding reception, with a floral stage and rows of chairs', usage: 'Reception section',
   },
   roseArch: {
     id: 'rose-arch-generated', src: '/images/generated/rose-arch/rose-arch-2400.webp',

@@ -15,7 +15,7 @@ export const weddingConfig = {
   reception: {
     title: 'Wedding Reception', venue: 'Christ the King Community Hall', location: 'Iruthayapuram',
     time: '5:30 PM' as string | null, mapUrl: 'https://maps.app.goo.gl/m8UKbJJW82Tsv3TL7' as string | null, image: 'receptionHall',
-    imageAlt: 'Illustrative generated wedding reception hall; not a photograph of the confirmed venue',
+    imageAlt: 'Christ the King Community Hall set for the wedding reception, with a floral stage and rows of chairs',
   },
   scripture: { reference: 'Genesis 2:24', translation: null as string | null, text: 'And the two shall become one flesh.' },
   story: {
