@@ -241,5 +241,3 @@
 .scratch-card__paper>p.paper-parents:not(.save-date):not(.small):not(.invite-names){display:grid;gap:.15rem;color:var(--ink);font:italic 500 clamp(1.05rem,1.6vw,1.2rem)/1.5 var(--serif);letter-spacing:0;text-align:center}.family-photo figcaption small{display:block;margin-top:.35rem;font:500 .72rem/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85)}
 /* Best wishes under each family photo */
 .family-wishes{display:grid;gap:.6rem;padding:1.4rem clamp(1.2rem,3vw,2.5rem) 1.5rem;text-align:center}.family-wishes ul{display:flex;flex-wrap:wrap;justify-content:center;gap:.2rem 1.4rem;margin:0;padding:0;list-style:none;color:var(--wine);font:italic 500 clamp(1.15rem,2vw,1.4rem)/1.5 var(--serif)}
-/* Phones: the landscape hero photo fills only the upper part of the screen, so both faces fit instead of a tight crop */
-@media(max-width:600px){.hero-card>img{top:68px;height:60%;object-position:49% 30%;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}}
