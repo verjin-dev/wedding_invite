@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { MotionConfig } from 'framer-motion';
 import Countdown from './components/Countdown';
 import CoupleSection from './components/CoupleSection';
@@ -21,6 +21,14 @@ const Admin = lazy(() => import('./components/Admin'));
 
 export default function App() {
   const [invitationOpened, setInvitationOpened] = useState(false);
+  // GSAP and Anime.js load after the doors open, so they never delay the first paint.
+  useEffect(() => {
+    if (!invitationOpened) return;
+    let cleanup: (() => void) | undefined;
+    let cancelled = false;
+    void import('./lib/scrollEffects').then(effects => { if (!cancelled) cleanup = effects.initScrollEffects(); });
+    return () => { cancelled = true; cleanup?.(); };
+  }, [invitationOpened]);
   if (window.location.pathname.startsWith('/admin')) return <Suspense fallback={<main className="block">Loading administration...</main>}><Admin /></Suspense>;
   return <MotionConfig reducedMotion="user"><div className="site">
     {!invitationOpened && <DoorGate onOpened={() => setInvitationOpened(true)} />}
