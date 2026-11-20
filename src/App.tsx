@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
-import { MotionConfig } from 'framer-motion';
+import { AnimatePresence, MotionConfig } from 'framer-motion';
 import Countdown from './components/Countdown';
 import CoupleSection from './components/CoupleSection';
 import EventCard from './components/EventCard';
@@ -32,11 +32,11 @@ export default function App() {
   }, [invitationOpened]);
   if (window.location.pathname.startsWith('/admin')) return <Suspense fallback={<main className="block">Loading administration...</main>}><Admin /></Suspense>;
   return <MotionConfig reducedMotion="user"><div className="site">
-    {!invitationOpened && <DoorGate onOpened={() => setInvitationOpened(true)} />}
+    <AnimatePresence>{!invitationOpened && <DoorGate key="gate" onOpened={() => setInvitationOpened(true)} />}</AnimatePresence>
     <ScrollProgress />
     <Navigation />
     <main>
-      <Hero />
+      <Hero revealed={invitationOpened} />
       <OurStory />
       <Timeline />
       <Scripture />

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { imageAssets } from '../data/assets';
 
@@ -47,7 +48,8 @@ export default function DoorGate({ onOpened }: Props) {
     complete();
   };
 
-  return <div ref={gateRef} className={`gate${opening ? ' is-opening' : ''}`}>
+  // On leaving, the gate dissolves over the hero instead of vanishing in one frame.
+  return <motion.div ref={gateRef} className={`gate${opening ? ' is-opening' : ''}`} exit={{ opacity: 0, pointerEvents: 'none', transition: { duration: .9, ease: [0.4, 0, 0.2, 1] } }}>
     <div className="gate-sky" aria-hidden="true" />
 
     <header className="opening-heading">
@@ -89,5 +91,5 @@ export default function DoorGate({ onOpened }: Props) {
     </div>
 
     <p className="sr-only" role="status" aria-live="polite">{announce}</p>
-  </div>;
+  </motion.div>;
 }
