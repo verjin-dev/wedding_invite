@@ -33,6 +33,9 @@ export function initScrollEffects(): () => void {
       if (caption) gsap.from(caption, { opacity: 0, y: 24, duration: .8, delay: .7, ease: 'power2.out', scrollTrigger: once(photo) });
     });
 
+    // The love-story line grows down the page as the chapters are read.
+    gsap.fromTo('.timeline-line', { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '.timeline', start: 'top 70%', end: 'bottom 60%', scrub: .6 } });
+
     // Event facts slide in one after another.
     gsap.utils.toArray<HTMLElement>('.event-content').forEach(content => {
       gsap.from(content.querySelectorAll('.event-time, .event-details p'), { opacity: 0, x: -26, duration: .7, stagger: .13, ease: 'power2.out', scrollTrigger: once(content, 'top 78%') });

@@ -29,6 +29,23 @@ export const weddingConfig = {
     ],
     image: 'couplePortrait', imageAlt: 'Verjin and Jesmi together outdoors',
   },
+  timeline: {
+    title: 'Our Love Story',
+    opening: 'Before we knew what forever meant, life had already written our names in the same story.',
+    closing: 'Once upon a time, we knew each other. Today, we choose each other. Tomorrow, we become forever.',
+    chapters: [
+      { label: 'Chapter 01 · The beginning', title: 'A Familiar Face, A Beautiful Story', when: 'Since childhood' as string | null,
+        text: 'Some people enter our lives as strangers. You entered mine as a familiar face. Having known each other since childhood, little did we know that one day our paths would lead us to forever.' },
+      { label: 'Chapter 02 · The first spark', title: 'When Friendship Became Something More', when: null as string | null,
+        text: 'What once felt familiar slowly became special. A connection that grew beyond childhood memories, bringing two hearts closer in the most unexpected way.' },
+      { label: 'Chapter 03 · 9 August', title: 'A Day That Made It Real', when: 'Our families meet' as string | null,
+        text: 'A special day when our story took a beautiful step forward. Our first official meeting with the family: a moment filled with hope, happiness and the beginning of a new bond between two families.' },
+      { label: 'Chapter 04 · 2 October 2026', title: 'A Promise of Forever', when: "Engagement · Bride's home" as string | null,
+        text: 'With the blessings of our families, we made a promise to walk through life together. Two hearts, two families and one beautiful future.' },
+    ],
+    finale: { label: 'Final chapter · 17 May 2027', title: 'And Forever Begins',
+      text: 'The story that began in childhood becomes a lifetime promise before God. From familiar faces to forever partners, our most beautiful chapter is yet to begin.' },
+  },
   profiles: {
     groomIntroduction: 'BE Computer Science · Gen AI Engineer at TCS',
     brideIntroduction: 'B.Sc Maths, MBA · Accountant at St George Galaxy Eco School',

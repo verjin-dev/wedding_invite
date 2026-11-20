@@ -247,3 +247,23 @@
 .tap-burst{position:fixed;z-index:9999;width:0;height:0;pointer-events:none}
 .tap-burst i{position:absolute;left:-3px;top:-3px;width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px rgba(216,189,140,.9)}
 .tap-burst i:nth-child(odd){background:var(--champagne);width:4px;height:4px}
+/* Love story timeline */
+.timeline-section{position:relative;background:var(--cream)}
+.timeline-inner{width:min(100%,46rem);margin:auto;padding:clamp(4.5rem,10vw,8rem) 16px}
+.timeline-head{text-align:center;margin-bottom:clamp(2.5rem,6vw,4rem)}
+.timeline-head .block-title{color:var(--wine);margin:.3rem auto 0;font-size:clamp(2.6rem,6vw,4.4rem)}
+.timeline-opening,.timeline-closing>p:first-child{max-width:32rem;margin:1.2rem auto 0;color:var(--wine);font:italic 400 clamp(1.2rem,2.2vw,1.55rem)/1.5 var(--serif)}
+.timeline{position:relative;padding-left:2.4rem}
+.timeline ol{display:grid;gap:clamp(2.2rem,5vw,3rem);margin:0;padding:0;list-style:none}
+.timeline-line{position:absolute;left:.55rem;top:.5rem;bottom:.5rem;width:1px;background:linear-gradient(var(--gold),var(--champagne) 85%,transparent);transform-origin:top}
+.timeline-item{position:relative}
+.timeline-item::before{content:"";position:absolute;left:-2.25rem;top:.1rem;width:.8rem;height:.8rem;border:1px solid var(--gold);border-radius:50%;background:var(--paper);box-shadow:0 0 0 5px var(--cream)}
+.timeline-item h3{margin:.35rem 0 .7rem;color:var(--ink);font:500 clamp(1.5rem,3vw,2rem)/1.2 var(--serif)}
+.timeline-text{color:var(--muted);font:italic 400 clamp(1.05rem,1.8vw,1.18rem)/1.75 var(--serif)}
+.timeline-when{margin-top:.8rem;color:var(--rose);font:600 .7rem/1.5 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.timeline-item--final::before{background:var(--gold);transform:scale(1.25)}
+.timeline-finale{padding:clamp(1.4rem,4vw,2.2rem);border-radius:4px;background:var(--wine);box-shadow:0 18px 40px -24px rgba(55,19,30,.6)}
+.timeline-finale .eyebrow,.timeline-finale .timeline-when{color:var(--champagne)}
+.timeline-finale h3{color:#fff}
+.timeline-finale .timeline-text{color:rgba(255,255,255,.86)}
+.timeline-closing{margin-top:clamp(2.5rem,6vw,4rem);text-align:center}

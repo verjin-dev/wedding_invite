@@ -14,6 +14,7 @@ import VenueDirections from './components/VenueDirections';
 import FormalInvite from './components/FormalInvite';
 import RSVP from './components/RSVP';
 import Scripture from './components/Scripture';
+import Timeline from './components/Timeline';
 import DoorGate from './components/DoorGate';
 import ScrollProgress from './components/ScrollProgress';
 
@@ -37,6 +38,7 @@ export default function App() {
     <main>
       <Hero />
       <OurStory />
+      <Timeline />
       <Scripture />
       <CoupleSection />
       <Families />
