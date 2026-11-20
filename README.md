@@ -1,6 +1,8 @@
 # VJ Wedding — Verjin & Jesmi
 
-A responsive Catholic wedding invitation site built with React 19, TypeScript, Vite 6, Framer Motion and Supabase. Wedding details live in `src/data/wedding.ts`; image provenance, responsive sizes and alt text live in `src/data/assets.ts`.
+A responsive Catholic wedding invitation site for Verjin V and Anto Jesmi DK (17 May 2027), built with React 19, TypeScript, Vite 6, Framer Motion, GSAP, Anime.js and Supabase, and deployed on Netlify at https://verjinwedsjesmi.netlify.app/.
+
+All wedding facts live in `src/data/wedding.ts`; image provenance, responsive sizes and alt text live in `src/data/assets.ts`. Components read from these files and do not repeat dates, times or venues.
 
 ## Run locally
 
@@ -11,35 +13,51 @@ npm run build
 npm run preview
 ```
 
-## Content and image sources
+There is no test suite or linter configured; `npm run build` runs the TypeScript check (`tsc -b`) before the Vite build.
 
-The public site uses the supplied bride and groom portraits, both supplied family photographs, two couple photographs, and both supplied church exterior reference photographs. Family and gallery images preserve their source proportions. Church exterior and interior scenes are generated interpretations based on the supplied references. The rose-arch countdown background is generated. The reception hall is a generic illustration and is labeled as such; it is not a photo of the confirmed venue. Generated originals and generation notes are kept under `assets/generated/originals` and `assets/generated/README.md`.
+## Wedding details (source of truth: `src/data/wedding.ts`)
 
-Edit names, dates, times, venue details, story copy, invitation copy, and gallery entries in `src/data/wedding.ts`. Set a ceremony or reception `mapUrl` only after confirming an official map destination. Reception time is intentionally unset. The family members are not named and no names or introductions have been invented.
+| | |
+|---|---|
+| Ceremony | 17 May 2027, 10:00 AM, Christ the King Church, Iruthayapuram (Kuzhithurai Diocese) |
+| Reception | 17 May 2027, 5:30 PM, Christ the King Community Hall, Iruthayapuram |
+| Engagement | 2 October 2026, 11:30 AM, bride's home |
+| Time zone | Asia/Kolkata; timestamps use the fixed `+05:30` offset (India has no daylight saving) |
 
-## RSVP and admin setup
+## Implemented and checked
 
-1. Apply `supabase/migrations/20261106000000_rsvp.sql` in the Supabase SQL editor.
-2. Create an administrator in Supabase Auth and set the user's `app_metadata.role` to `admin` with a trusted server/admin tool. Never set admin app metadata from the browser.
-3. Copy `.env.example` to `.env.local` and configure `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
-4. Restart Vite. `/admin` signs in through Supabase Auth and shows RSVP responses only to users with the admin claim.
+- Door-opening intro, hero, our story, love-story timeline, scripture (Genesis 2:24, a short phrase with no translation named), couple profiles, families with best wishes, gallery, formal invitation with scratch card, ceremony and reception cards, countdown, directions, RSVP, save the date, footer.
+- Countdown to the ceremony in India Standard Time, with "married today" and "were married" states after the start; it never shows negative values.
+- Calendar: a Google Calendar link per event (ceremony and reception) and one `.ics` file with both. Only start times are given; no end time is guessed.
+- Directions: separate Google Maps links for the church and the reception hall, both supplied by the couple.
+- Gallery: category filters and a lightbox with keyboard (arrows, Escape, focus trap) and swipe support.
+- Animations respect `prefers-reduced-motion`. GSAP and Anime.js load only after the intro doors open.
+- SEO and sharing: title, description, canonical URL, Open Graph and Twitter metadata with a 1200×630 couple image, favicon, `public/robots.txt` (keeps `/admin` out) and `public/sitemap.xml`.
 
-Only the public anon/publishable key belongs in frontend environment variables. Never expose a service-role key through a `VITE_*` variable. The RSVP form reports a setup message while Supabase is unavailable and reports success only after a saved insert. The public insert policy needs server-side rate limiting or CAPTCHA before broad launch. The admin interface currently covers sign-in, RSVP review, and CSV export; gallery/content administration is not implemented.
+## Images
 
-The credentials and Supabase values previously shared in conversation are not stored in tracked files. Rotate any credentials that were exposed in chat before launch.
+Couple, bride, groom and both family pictures are the couple's own photographs. The reception hall is a photograph of the actual hall, supplied by the couple. The hero portrait and the sunset portrait are AI-generated portraits supplied by the couple (the hero says so on screen). The church exterior and interior scenes are generated interpretations of the couple's church photographs, and the rose-arch countdown background is generated. Every image path in `assets.ts` exists under `public/`.
+
+## RSVP and admin (requires Supabase credentials)
+
+1. In the Supabase SQL editor, apply in order:
+   - `supabase/migrations/20261106000000_rsvp.sql`: the table and row level security (anyone may insert; only admins may read, update or delete).
+   - `supabase/migrations/20261109000000_rsvp_delete.sql`: admin delete.
+   - `supabase/migrations/20261120000000_rsvp_rate_limit.sql`: server-side spam protection (at most 5 replies per visitor and one per name in 10 minutes, 60 in total in 10 minutes; trims input and checks the phone format). Visitors are identified only by a salted hash, kept for a day in a table no API role can read.
+2. Create the administrator in Supabase Auth and set `app_metadata.role` to `admin` from the Supabase dashboard or another trusted server tool. Never set it from the browser; the role is read only from `app_metadata`, which users cannot change.
+3. Copy `.env.example` to `.env.local` and set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. On Netlify, set the same two variables in the site's environment.
+4. `/admin` signs in through Supabase Auth, lists replies, deletes them and exports CSV (cells that could run as spreadsheet formulas are neutralised). Non-admins see no rows because the database refuses them.
+
+Only the public anon key belongs in `VITE_*` variables; never put a service-role key there. The RSVP form shows success only after Supabase confirms the insert, disables the button while sending, and explains a rate-limit refusal.
 
 ## Deployment
 
-`netlify.toml` holds the Netlify build command, publish directory, Node version, and the SPA fallback redirect, so a site linked to this repository needs no build settings entered by hand. Set the two public Supabase variables in the site's environment; they are not in the file because only the dashboard should hold them.
+`netlify.toml` holds the build command, publish directory, Node version and the SPA fallback for `/admin`. Pushing to `main` deploys.
 
-Add the canonical URL, absolute Open Graph image URL, sitemap, and `robots.txt` sitemap declaration after confirming the production domain. The previous `vjwedding.netlify.app` URL was unverified, so it is not published as canonical metadata.
+## Still needed from the couple
 
-## Still needed
-
-- Confirmed production domain and official Google Maps URLs.
-- Reception time and schedule.
-- Bible translation if a full Genesis quotation should be shown.
-- Family names and introductions, if you want those published.
-- Local file for the separately attached couple portrait, if it should be included.
-- Supabase migration, Auth administrator, and production RSVP verification.
-- Server-side RSVP spam protection before public launch.
+- A date or details for "when friendship became love"; the timeline leaves this chapter out until then.
+- The year of the first family meeting (shown as "9 August").
+- A Bible translation, if the Genesis 2:24 text should be credited.
+- A contact phone or WhatsApp number and an RSVP reply-by date, if wanted.
+- Applying `20261120000000_rsvp_rate_limit.sql` in Supabase, then one test reply to confirm.

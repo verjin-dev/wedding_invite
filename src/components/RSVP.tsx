@@ -32,7 +32,13 @@ export default function RSVP() {
       message: String(form.get('message') ?? '').trim() || null,
     });
     setBusy(false);
-    if (error) { setStatus('We could not save your reply. Please try again later.'); return; }
+    if (error) {
+      // The database guard explains its refusals; anything else is a plain failure.
+      setStatus(error.message.includes('rate_limited') ? 'We have just received a reply under this name or from this device. Please wait a few minutes before sending another.'
+        : error.message.includes('invalid_phone') ? 'Please check the phone number: digits, spaces, +, - and brackets only.'
+        : 'We could not save your reply. Please try again later.');
+      return;
+    }
     formEl.reset();
     const attending = attendance === 'attending';
     setSent({ name, attending, guests });
@@ -65,7 +71,7 @@ export default function RSVP() {
     <Reveal className="card rsvp-card"><p className="body">Please let us know if you can join us for the ceremony.</p>
       <form className="rsvp-form" onSubmit={submit}>
         <label>Full name<input name="name" autoComplete="name" required maxLength={120} /></label>
-        <label>Phone number <span className="small">(optional)</span><input name="phone" type="tel" autoComplete="tel" maxLength={32} /></label>
+        <label>Phone number <span className="small">(optional)</span><input name="phone" type="tel" autoComplete="tel" maxLength={32} pattern="[0-9+\(\)\- ]{6,32}" title="Digits, spaces, +, - and brackets only" /></label>
         <label>Will you attend?<select name="attendance" required defaultValue=""><option value="" disabled>Select a response</option><option value="attending">Joyfully accepts</option><option value="declined">Regretfully declines</option></select></label>
         <label>Number of guests<input name="guests" type="number" min="1" max="10" defaultValue="1" required /></label>
         <label className="rsvp-wide">A message <span className="small">(optional)</span><textarea name="message" rows={3} maxLength={1000} /></label>

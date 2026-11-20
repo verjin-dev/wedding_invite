@@ -106,7 +106,7 @@ export default function FormalInvite() {
     const message = [
       'With grateful hearts, we joyfully invite you to celebrate the Wedding of *Verjin & Jesmi*. ❤️',
       `📅 ${weddingConfig.wedding.dateLong}`,
-      `🕥 ${weddingConfig.wedding.ceremonyTime}`,
+      `🕙 ${weddingConfig.wedding.ceremonyTime}`,
       `📍 ${weddingConfig.ceremony.venue}, ${weddingConfig.ceremony.location}`,
       'Your presence and prayers would mean so much to us.',
       '💌 View our wedding invitation:',

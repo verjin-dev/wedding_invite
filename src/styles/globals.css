@@ -267,3 +267,18 @@
 .timeline-finale h3{color:#fff}
 .timeline-finale .timeline-text{color:rgba(255,255,255,.86)}
 .timeline-closing{margin-top:clamp(2.5rem,6vw,4rem);text-align:center}
+/* Timeline alternates either side of a centred line on wide screens */
+@media (min-width:900px){
+.timeline-inner{width:min(100%,64rem)}
+.timeline{padding-left:0}
+.timeline-line{left:50%}
+.timeline-item{width:calc(50% - 3rem)}
+.timeline-item:nth-child(odd){margin-right:auto;text-align:right}
+.timeline-item:nth-child(even){margin-left:auto}
+.timeline-item:nth-child(odd)::before{left:auto;right:calc(-3rem - .4rem)}
+.timeline-item:nth-child(even)::before{left:calc(-3rem - .4rem)}
+.timeline-item.timeline-item--final{width:min(100%,40rem);margin:1.5rem auto 0;text-align:center}
+.timeline-item.timeline-item--final::before{top:-1.9rem;left:calc(50% - .4rem);right:auto}
+}
+/* Directions and calendar side by side on the event cards */
+.event-actions{display:flex;flex-wrap:wrap;gap:.7rem}

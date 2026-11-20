@@ -7,14 +7,14 @@ export const weddingConfig = {
     bride: { name: 'Anto Jesmi DK', displayName: 'Jesmi', portrait: '/images/IMG_2012(1).jpeg', position: '68%', parents: 'Mr. Devaraj A & Mrs. Kala', wishes: ['Anto Jerin D K'] },
     displayNames: 'Verjin & Jesmi',
   },
-  wedding: { date: '2027-05-17', dateLabel: '17 May 2027', dateLong: 'Monday, 17 May 2027', ceremonyTime: '10:30 AM', ceremonyTime24: '10:30', timezone: 'Asia/Kolkata' },
+  wedding: { date: '2027-05-17', dateLabel: '17 May 2027', dateLong: 'Monday, 17 May 2027', ceremonyTime: '10:00 AM', ceremonyTime24: '10:00', timezone: 'Asia/Kolkata', utcOffset: '+05:30' },
   ceremony: {
     title: 'Wedding', venue: 'Christ the King Church', location: 'Iruthayapuram', diocese: 'Kuzhithurai Diocese',
     mapUrl: 'https://maps.app.goo.gl/8n2qAGP3iD5eYdadA' as string | null, image: 'churchInterior', imageAlt: 'Generated interpretation of the altar and mosaic panels in the supplied church interior reference',
   },
   reception: {
     title: 'Wedding Reception', venue: 'Christ the King Community Hall', location: 'Iruthayapuram',
-    time: '5:30 PM' as string | null, mapUrl: 'https://maps.app.goo.gl/m8UKbJJW82Tsv3TL7' as string | null, image: 'receptionHall',
+    time: '5:30 PM' as string | null, time24: '17:30' as string | null, mapUrl: 'https://maps.app.goo.gl/m8UKbJJW82Tsv3TL7' as string | null, image: 'receptionHall',
     imageAlt: 'Christ the King Community Hall set for the wedding reception, with a floral stage and rows of chairs',
   },
   scripture: { reference: 'Genesis 2:24', translation: null as string | null, text: 'And the two shall become one flesh.' },
@@ -34,21 +34,20 @@ export const weddingConfig = {
     opening: 'Before we knew what forever meant, life had already written our names in the same story.',
     closing: 'Once upon a time, we knew each other. Today, we choose each other. Tomorrow, we become forever.',
     chapters: [
-      { label: 'Chapter 01 · The beginning', title: 'A Familiar Face, A Beautiful Story', when: 'Since childhood' as string | null,
-        text: 'Some people enter our lives as strangers. You entered mine as a familiar face. Having known each other since childhood, little did we know that one day our paths would lead us to forever.' },
-      { label: 'Chapter 02 · The first spark', title: 'When Friendship Became Something More', when: null as string | null,
-        text: 'What once felt familiar slowly became special. A connection that grew beyond childhood memories, bringing two hearts closer in the most unexpected way.' },
-      { label: 'Chapter 03 · 9 August', title: 'A Day That Made It Real', when: 'Our families meet' as string | null,
-        text: 'A special day when our story took a beautiful step forward. Our first official meeting with the family: a moment filled with hope, happiness and the beginning of a new bond between two families.' },
-      { label: 'Chapter 04 · 2 October 2026', title: 'A Promise of Forever', when: "Engagement · Bride's home" as string | null,
+      // "When friendship became love" returns here once its details are confirmed; nothing is shown for it until then.
+      { label: 'Chapter 01 · Since childhood', title: 'A Familiar Beginning', when: "Jesmi is the sister of Verjin's close friend" as string | null,
+        text: 'Before we knew what forever meant, life had already placed us in the same story. What began as a childhood connection would one day become something much more beautiful.' },
+      { label: 'Chapter 02 · 9 August', title: 'A New Beginning', when: 'Our first official family meeting' as string | null,
+        text: 'Some moments quietly change the direction of our lives. This was one of them: our first official family meeting, bringing two families closer and giving our story a beautiful new beginning.' },
+      { label: 'Chapter 03 · 2 October 2026', title: 'A Promise of Forever', when: "Engagement · 11:30 AM · Bride's home" as string | null,
         text: 'With the blessings of our families, we made a promise to walk through life together. Two hearts, two families and one beautiful future.' },
     ],
     finale: { label: 'Final chapter · 17 May 2027', title: 'And Forever Begins',
-      text: 'The story that began in childhood becomes a lifetime promise before God. From familiar faces to forever partners, our most beautiful chapter is yet to begin.' },
+      text: 'The story that began in childhood becomes a lifetime promise before God. From familiar faces to forever partners, our most beautiful chapter begins.' },
   },
   profiles: {
-    groomIntroduction: 'BE Computer Science · Gen AI Engineer at TCS',
-    brideIntroduction: 'B.Sc Maths, MBA · Accountant at St George Galaxy Eco School',
+    groomIntroduction: 'B.E. Computer Science and Engineering · Generative AI Engineer at TCS',
+    brideIntroduction: 'B.Sc. Mathematics, MBA · Accountant at St George Galaxy Eco School',
   },
   gallery: [
     { assetId: 'couplePortrait', alt: 'Verjin and Jesmi together outdoors', category: 'Couple' as GalleryCategory },
@@ -68,10 +67,15 @@ export const weddingConfig = {
   closing: { line: 'Two hearts. One promise. A lifetime together.', subtitle: 'A Sacred Promise. A Lifetime of Love.', image: 'heroChurch', imageAlt: 'Generated golden-hour interpretation of the church exterior in the supplied reference photographs' },
 } as const;
 
+/** An ISO timestamp on the wedding day in India Standard Time (Asia/Kolkata has no daylight saving, so the offset is fixed). */
+const onWeddingDay = (time24: string) => `${weddingConfig.wedding.date}T${time24}:00${weddingConfig.wedding.utcOffset}`;
+export const ceremonyStartIso = onWeddingDay(weddingConfig.wedding.ceremonyTime24);
+export const receptionStartIso = weddingConfig.reception.time24 ? onWeddingDay(weddingConfig.reception.time24) : null;
+
 export const wedding = {
   groom: weddingConfig.couple.groom.name, bride: weddingConfig.couple.bride.name, displayNames: weddingConfig.couple.displayNames,
   dateLabel: weddingConfig.wedding.dateLong, dateShort: `17 \u00b7 May \u00b7 2027`,
-  ceremonyStart: `${weddingConfig.wedding.date}T${weddingConfig.wedding.ceremonyTime24}:00+05:30`,
+  ceremonyStart: ceremonyStartIso,
   verse: { ref: weddingConfig.scripture.reference, translation: weddingConfig.scripture.translation, text: weddingConfig.scripture.text },
   tagline: weddingConfig.brand.tagline,
   ceremony: { ...weddingConfig.ceremony, time: weddingConfig.wedding.ceremonyTime },

@@ -8,6 +8,8 @@
 **Visual direction:** Premium Christian wedding invitation; ivory, champagne gold, burgundy, blush pink and warm white  
 **Suggested stack:** React + TypeScript + Vite + Tailwind CSS (or plain CSS if preferred)
 
+> **Status, 20 November 2026:** this is the original brief. The site is built (React 19, TypeScript, Vite 6, plain CSS, Framer Motion, GSAP, Anime.js, Supabase) and live at https://verjinwedsjesmi.netlify.app/. Where this document and `src/data/wedding.ts` disagree, `wedding.ts` is correct; `README.md` lists what is implemented and what still awaits information.
+
 ---
 
 ## 1. Project objective
@@ -35,20 +37,19 @@ Use these details as the source of truth throughout the site.
 | Bride | Anto Jesmi D K |
 | Wedding date | Monday, 17 May 2027 |
 | Ceremony | Holy Matrimony |
-| Ceremony time | 10:30 AM |
+| Ceremony time | 10:00 AM |
 | Ceremony venue | Christ the King Church |
 | Ceremony location | Iruthayapuram |
 | Reception | Wedding Reception |
-| Reception time | 5:00 PM – 9:00 PM |
+| Reception time | 5:30 PM (end time not confirmed) |
 | Reception venue | Christ the King Community Hall |
-| Reception location | Kulappuram |
+| Reception location | Iruthayapuram |
+| Engagement | 2 October 2026, 11:30 AM, bride's home |
 
-### Family details (verify before publishing)
+### Family details
 
-These names were supplied in earlier invitation details. Confirm spelling and permission before publishing:
-
-- Groom's parents: Mr. John Mathew and Mrs. Elsy John
-- Bride's parents: Mr. Thomas George and Mrs. Mercy Thomas
+- Groom's parents: Mr. Vargheese M & Mrs. Lailakumari N
+- Bride's parents: Mr. Devaraj A & Mrs. Kala
 
 Do not invent postal addresses, phone numbers, map coordinates, RSVP contacts, or family details.
 
@@ -172,7 +173,7 @@ Optional future gallery:
 Display days, hours, minutes, and seconds until the ceremony begins.
 
 Target timestamp:
-`2027-05-17T10:30:00+05:30`
+`2027-05-17T10:00:00+05:30`
 
 Implementation requirements:
 - Use the explicit `+05:30` offset so the countdown is anchored to India Standard Time.
@@ -189,7 +190,7 @@ Implementation requirements:
 
 **Details:**
 - Date: Monday, 17 May 2027
-- Time: 10:30 AM
+- Time: 10:00 AM
 - Venue: Christ the King Church
 - Location: Iruthayapuram
 
@@ -205,13 +206,11 @@ Do not claim that this search link is a verified exact pin. Replace it with a co
 
 **Details:**
 - Date: Monday, 17 May 2027
-- Time: 5:00 PM – 9:00 PM
+- Time: 5:30 PM
 - Venue: Christ the King Community Hall
-- Location: Kulappuram
+- Location: Iruthayapuram
 
-Add a “View on Google Maps” link:
-
-`https://www.google.com/maps/search/?api=1&query=Christ+the+King+Community+Hall+Kulappuram`
+Add a “View on Google Maps” link to the confirmed map URL kept in `src/data/wedding.ts`.
 
 Verify the correct hall before publishing. Replace the search URL with a precise pin if the venue owner provides one.
 
@@ -352,7 +351,7 @@ export const wedding = {
   dateLabel: "Monday, 17 May 2027",
   ceremony: {
     title: "Holy Matrimony",
-    time: "10:30 AM",
+    time: "10:00 AM",
     venue: "Christ the King Church",
     location: "Iruthayapuram",
     mapsUrl:
@@ -360,13 +359,12 @@ export const wedding = {
   },
   reception: {
     title: "Wedding Reception",
-    time: "5:00 PM – 9:00 PM",
+    time: "5:30 PM",
     venue: "Christ the King Community Hall",
-    location: "Kulappuram",
-    mapsUrl:
-      "https://www.google.com/maps/search/?api=1&query=Christ+the+King+Community+Hall+Kulappuram",
+    location: "Iruthayapuram",
+    mapsUrl: "https://maps.app.goo.gl/m8UKbJJW82Tsv3TL7",
   },
-  ceremonyStart: "2027-05-17T10:30:00+05:30",
+  ceremonyStart: "2027-05-17T10:00:00+05:30",
 };
 ```
 
@@ -486,10 +484,10 @@ Before sharing the invitation publicly, confirm:
 - [ ] Groom name is exactly “Verjin V”.
 - [ ] Bride name is exactly “Anto Jesmi D K”.
 - [ ] Wedding date is 17 May 2027.
-- [ ] Ceremony is at 10:30 AM.
+- [ ] Ceremony is at 10:00 AM.
 - [ ] Ceremony venue is Christ the King Church, Iruthayapuram.
-- [ ] Reception is from 5:00 PM to 9:00 PM.
-- [ ] Reception venue is Christ the King Community Hall, Kulappuram.
+- [ ] Reception starts at 5:30 PM.
+- [ ] Reception venue is Christ the King Community Hall, Iruthayapuram.
 - [ ] Both map links open and point to the correct venues.
 - [ ] Couple photo is approved and displays correctly.
 - [ ] Countdown uses Asia/Kolkata time.

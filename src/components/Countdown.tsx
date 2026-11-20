@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { CalendarPlus, Download } from 'lucide-react';
 import { imageAssets } from '../data/assets';
-import { weddingConfig } from '../data/wedding';
+import { ceremonyStartIso, weddingConfig } from '../data/wedding';
 import { useCountdown } from '../hooks/useCountdown';
 import { downloadIcs, googleCalendarUrl } from '../lib/calendar';
 import { RingsFlourish } from './Flourishes';
@@ -15,8 +15,7 @@ function Digits({ text }: { text: string }) {
 }
 
 export default function Countdown() {
-  const target = `${weddingConfig.wedding.date}T${weddingConfig.wedding.ceremonyTime24}:00+05:30`;
-  const countdown = useCountdown(target);
+  const countdown = useCountdown(ceremonyStartIso);
   const background = imageAssets.roseArch;
   return <section className="countdown-band" id="countdown" aria-labelledby="countdown-title">
     <img className="countdown-band__bg" src={background.src} srcSet={background.srcSet} sizes="100vw" width={background.width} height={background.height} alt="" loading="lazy" decoding="async"/>
