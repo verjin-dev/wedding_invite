@@ -3,7 +3,7 @@ export type GalleryCategory = 'Couple' | 'Engagement' | 'Family' | 'Wedding' | '
 export const weddingConfig = {
   brand: { name: 'VJ Wedding', title: 'A Sacred Beginning', tagline: 'A Sacred Promise. A Lifetime of Love.' },
   couple: {
-    groom: { name: 'Verjin V', displayName: 'Verjin', portrait: '/images/IMG_2012(1).jpeg', position: '35%', parents: 'Mr. Vargheese M & Mrs. Lailakumari N', wishes: ['Anitha S', 'Berla V', 'Jefrin Ahil J', 'Jerifein Authisha J', 'Beutelin Mershika B'] },
+    groom: { name: 'Verjin V', displayName: 'Verjin', portrait: '/images/IMG_2012(1).jpeg', position: '35%', parents: 'Mr. Vargheese M & Mrs. Lailakumari N (Late)', wishes: ['Anitha S', 'Berla V', 'Jefrin Ahil J', 'Jerifein Authisha J', 'Beutelin Mershika B'] },
     bride: { name: 'Anto Jesmi DK', displayName: 'Jesmi', portrait: '/images/IMG_2012(1).jpeg', position: '68%', parents: 'Mr. Devaraj A & Mrs. Kala', wishes: ['Anto Jerin D K'] },
     displayNames: 'Verjin & Jesmi',
   },

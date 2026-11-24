@@ -48,7 +48,7 @@ Use these details as the source of truth throughout the site.
 
 ### Family details
 
-- Groom's parents: Mr. Vargheese M & Mrs. Lailakumari N
+- Groom's parents: Mr. Vargheese M & Mrs. Lailakumari N (Late)
 - Bride's parents: Mr. Devaraj A & Mrs. Kala
 
 Do not invent postal addresses, phone numbers, map coordinates, RSVP contacts, or family details.
