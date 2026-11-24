@@ -17,6 +17,8 @@ import Scripture from './components/Scripture';
 import Timeline from './components/Timeline';
 import DoorGate from './components/DoorGate';
 import ScrollProgress from './components/ScrollProgress';
+import MusicToggle from './components/MusicToggle';
+import Blessing from './components/Blessing';
 
 const Admin = lazy(() => import('./components/Admin'));
 
@@ -34,6 +36,7 @@ export default function App() {
   return <MotionConfig reducedMotion="user"><div className="site">
     <AnimatePresence>{!invitationOpened && <DoorGate key="gate" onOpened={() => setInvitationOpened(true)} />}</AnimatePresence>
     <ScrollProgress />
+    <MusicToggle />
     <Navigation />
     <main>
       <Hero revealed={invitationOpened} />
@@ -44,12 +47,13 @@ export default function App() {
       <Families />
       <Gallery />
       <FormalInvite />
+      <SaveTheDate />
       <EventCard kind="ceremony" />
       <EventCard kind="reception" />
       <Countdown />
       <VenueDirections />
       <RSVP />
-      <SaveTheDate />
+      <Blessing />
     </main>
     <Footer />
   </div></MotionConfig>;

@@ -17,7 +17,13 @@ export const weddingConfig = {
     time: '5:30 PM' as string | null, time24: '17:30' as string | null, mapUrl: 'https://maps.app.goo.gl/m8UKbJJW82Tsv3TL7' as string | null, image: 'receptionHall',
     imageAlt: 'Christ the King Community Hall set for the wedding reception, with a floral stage and rows of chairs',
   },
-  scripture: { reference: 'Genesis 2:24', translation: null as string | null, text: 'And the two shall become one flesh.' },
+  scripture: { reference: 'Genesis 2:24', translation: null as string | null, text: 'Therefore a man shall leave his father and mother and be united to his wife, and they shall become one flesh.' },
+  scriptureCards: [
+    { reference: '1 John 4:19', text: 'We love because He first loved us.' },
+    { reference: 'Mark 10:9', text: 'Therefore what God has joined together, let no one separate.' },
+    { reference: '1 Corinthians 13:4', text: 'Love is patient, love is kind.' },
+    { reference: 'Ecclesiastes 4:9', text: 'Two are better than one.' },
+  ],
   story: {
     heading: 'Our Story', title: 'A Sacred Beginning',
     paragraphs: [

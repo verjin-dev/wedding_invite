@@ -38,6 +38,10 @@ There is no test suite or linter configured; `npm run build` runs the TypeScript
 
 Couple, bride, groom and both family pictures are the couple's own photographs. The reception hall is a photograph of the actual hall, supplied by the couple. The hero portrait and the sunset portrait are AI-generated portraits supplied by the couple (the hero says so on screen). The church exterior and interior scenes are generated interpretations of the couple's church photographs, and the rose-arch countdown background is generated. Every image path in `assets.ts` exists under `public/`.
 
+## Music
+
+Put an instrumental MP3 at `public/music/wedding.mp3` (ideally under 3 MB). It starts with the tap that opens the doors, fades in softly, loops and pauses while the tab is hidden; a round button in the bottom-right corner pauses and resumes it. Without the file nothing plays and the button stays hidden.
+
 ## RSVP and admin (requires Supabase credentials)
 
 1. In the Supabase SQL editor, apply in order:
@@ -59,5 +63,6 @@ Only the public anon key belongs in `VITE_*` variables; never put a service-role
 - A date or details for "when friendship became love"; the timeline leaves this chapter out until then.
 - The year of the first family meeting (shown as "9 August").
 - A Bible translation, if the Genesis 2:24 text should be credited.
+- The background music MP3 (see Music).
 - A contact phone or WhatsApp number and an RSVP reply-by date, if wanted.
 - Applying `20261120000000_rsvp_rate_limit.sql` in Supabase, then one test reply to confirm.

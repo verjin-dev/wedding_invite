@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { imageAssets } from '../data/assets';
+import { startMusic } from '../lib/music';
 
 type Props = { onOpened: () => void };
 
@@ -37,6 +38,8 @@ export default function DoorGate({ onOpened }: Props) {
 
   const openDoors = () => {
     if (opening) return;
+    // Browsers only let audio start inside the tap itself, not after the doors finish.
+    startMusic();
     if (prefersReducedMotion()) { complete(); return; }
     setOpening(true);
     setAnnounce('The doors are opening.');
@@ -45,6 +48,7 @@ export default function DoorGate({ onOpened }: Props) {
 
   const skip = () => {
     timers.current.forEach(clearTimeout);
+    startMusic();
     complete();
   };
 
