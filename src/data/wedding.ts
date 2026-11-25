@@ -42,12 +42,14 @@ export const weddingConfig = {
     opening: 'Before we knew what forever meant, life had already written our names in the same story.',
     closing: 'Once upon a time, we knew each other. Today, we choose each other. Tomorrow, we become forever.',
     chapters: [
-      // "When friendship became love" returns here once its details are confirmed; nothing is shown for it until then.
       { label: 'Chapter 01 · Since childhood', title: 'A Familiar Beginning', when: "Jesmi is the sister of Verjin's close friend" as string | null,
         text: 'Before we knew what forever meant, life had already placed us in the same story. What began as a childhood connection would one day become something much more beautiful.' },
-      { label: 'Chapter 02 · 9 August 2026', title: 'A New Beginning', when: 'Our first official family meeting' as string | null,
+      // No date is given for this chapter yet; add one to the label and `when` once it is confirmed.
+      { label: 'Chapter 02 · Somewhere along the way', title: 'When Friendship Became Love', when: null as string | null,
+        text: 'There was no single moment we can point to. Somewhere between familiar smiles and easy conversations, a friendship we had always known quietly became love, and we realised we were already walking the same way.' },
+      { label: 'Chapter 03 · 9 August 2026', title: 'A New Beginning', when: 'Our first official family meeting' as string | null,
         text: 'Some moments quietly change the direction of our lives. This was one of them: our first official family meeting, bringing two families closer and giving our story a beautiful new beginning.' },
-      { label: 'Chapter 03 · 2 October 2026', title: 'A Promise of Forever', when: "Engagement · 11:30 AM · Bride's home" as string | null,
+      { label: 'Chapter 04 · 2 October 2026', title: 'A Promise of Forever', when: "Engagement · 11:30 AM · Bride's home" as string | null,
         text: 'With the blessings of our families, we made a promise to walk through life together. Two hearts, two families and one beautiful future.' },
     ],
     finale: { label: 'Final chapter · 17 May 2027', title: 'And Forever Begins',
