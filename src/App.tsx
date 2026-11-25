@@ -55,6 +55,7 @@ export default function App() {
       <RSVP />
       <Blessing />
     </main>
-    <Footer />
+    {/* Bringing the doors back replays the opening; the music keeps playing through it. */}
+    <Footer onReplay={() => { window.scrollTo({ top: 0, behavior: 'instant' }); setInvitationOpened(false); }} />
   </div></MotionConfig>;
 }

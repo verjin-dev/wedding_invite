@@ -56,13 +56,14 @@ export const weddingConfig = {
     brideIntroduction: 'B.Sc. Mathematics, MBA · Accountant at St George Galaxy Eco School',
   },
   gallery: [
-    { assetId: 'couplePortrait', alt: 'Verjin and Jesmi together outdoors', category: 'Couple' as GalleryCategory },
-    { assetId: 'coupleMemory', alt: 'Verjin and Jesmi sharing a smile', category: 'Engagement' as GalleryCategory },
-    { assetId: 'coupleSunset', alt: 'Verjin and Jesmi sharing a sunset moment with a bouquet of roses', category: 'Couple' as GalleryCategory },
-    { assetId: 'bridePortrait', alt: 'Anto Jesmi DK in her bridal portrait', category: 'Wedding' as GalleryCategory },
-    { assetId: 'groomPortrait', alt: 'Verjin V in his wedding portrait', category: 'Wedding' as GalleryCategory },
-    { assetId: 'brideFamily', alt: "Anto Jesmi with her family", category: 'Family' as GalleryCategory },
-    { assetId: 'groomFamily', alt: 'Verjin with his family', category: 'Family' as GalleryCategory },
+    // `caption` is the line shown under the photo; `alt` describes it for screen readers.
+    { assetId: 'couplePortrait', alt: 'Verjin and Jesmi together outdoors', caption: 'Every prayer led us here', category: 'Couple' as GalleryCategory },
+    { assetId: 'coupleMemory', alt: 'Verjin and Jesmi sharing a smile', caption: 'Laughter that feels like home', category: 'Engagement' as GalleryCategory },
+    { assetId: 'coupleSunset', alt: 'Verjin and Jesmi sharing a sunset moment with a bouquet of roses', caption: 'An answered prayer', category: 'Couple' as GalleryCategory },
+    { assetId: 'bridePortrait', alt: 'Anto Jesmi DK in her bridal portrait', caption: 'The bride, Jesmi', category: 'Wedding' as GalleryCategory },
+    { assetId: 'groomPortrait', alt: 'Verjin V in his wedding portrait', caption: 'The groom, Verjin', category: 'Wedding' as GalleryCategory },
+    { assetId: 'brideFamily', alt: "Anto Jesmi with her family", caption: 'Jesmi with the family who raised her in love', category: 'Family' as GalleryCategory },
+    { assetId: 'groomFamily', alt: 'Verjin with his family', caption: 'Verjin with the family who raised him in faith', category: 'Family' as GalleryCategory },
   ],
   invitation: {
     paragraphs: [
