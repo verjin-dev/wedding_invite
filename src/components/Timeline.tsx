@@ -1,10 +1,11 @@
 import { weddingConfig } from '../data/wedding';
 import Reveal, { SplitTitle } from './Reveal';
 
+/** The love story chapter by chapter; it continues the Our Story section rather than standing alone. */
 export default function Timeline() {
   const { title, opening, closing, chapters, finale } = weddingConfig.timeline;
   const { ceremony, wedding } = weddingConfig;
-  return <section className="timeline-section" id="journey" aria-labelledby="timeline-title"><div className="timeline-inner">
+  return <div className="timeline-inner" id="journey">
     <Reveal className="timeline-head"><p className="eyebrow">Chapter by chapter</p><SplitTitle id="timeline-title" text={title}/><p className="timeline-opening">{opening}</p></Reveal>
     <div className="timeline"><span className="timeline-line" aria-hidden="true"/><ol>
       {chapters.map(chapter => <li className="timeline-item" key={chapter.title}><Reveal>
@@ -17,5 +18,5 @@ export default function Timeline() {
       </Reveal></li>
     </ol></div>
     <Reveal className="timeline-closing"><p>{closing}</p><p className="sign">{weddingConfig.couple.displayNames}</p></Reveal>
-  </div></section>;
+  </div>;
 }

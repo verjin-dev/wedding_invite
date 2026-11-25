@@ -1,10 +1,8 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { AnimatePresence, MotionConfig } from 'framer-motion';
-import Countdown from './components/Countdown';
 import CoupleSection from './components/CoupleSection';
 import EventCard from './components/EventCard';
 import Footer from './components/Footer';
-import Families from './components/Families';
 import Gallery from './components/Gallery';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
@@ -14,7 +12,6 @@ import VenueDirections from './components/VenueDirections';
 import FormalInvite from './components/FormalInvite';
 import RSVP from './components/RSVP';
 import Scripture from './components/Scripture';
-import Timeline from './components/Timeline';
 import DoorGate from './components/DoorGate';
 import ScrollProgress from './components/ScrollProgress';
 import MusicToggle from './components/MusicToggle';
@@ -41,16 +38,13 @@ export default function App() {
     <main>
       <Hero revealed={invitationOpened} />
       <OurStory />
-      <Timeline />
       <Scripture />
       <CoupleSection />
-      <Families />
       <Gallery />
       <FormalInvite />
       <SaveTheDate />
       <EventCard kind="ceremony" />
       <EventCard kind="reception" />
-      <Countdown />
       <VenueDirections />
       <RSVP />
       <Blessing />

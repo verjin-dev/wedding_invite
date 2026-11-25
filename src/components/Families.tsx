@@ -7,8 +7,9 @@ const families = [
   { key: 'bride', label: "Jesmi's family", parents: weddingConfig.couple.bride.parents, wishes: weddingConfig.couple.bride.wishes, photo: imageAssets.brideFamily },
 ];
 
+/** The two families, shown in the couple section under the bride and groom. */
 export default function Families() {
-  return <section className="block family-section" id="families" aria-labelledby="families-title">
+  return <div className="family-section" id="families">
     <Reveal className="block-head">
       <p className="eyebrow">With the blessings of our families</p>
       <SplitTitle id="families-title" text="The families who raised us"/>
@@ -23,5 +24,5 @@ export default function Families() {
         <div className="family-wishes"><p className="eyebrow">With best wishes from</p><StaggerList items={wishes}/></div>
       </Reveal>)}
     </div>
-  </section>;
+  </div>;
 }

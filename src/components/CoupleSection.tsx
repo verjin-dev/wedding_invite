@@ -2,6 +2,7 @@ import { imageAssets } from '../data/assets';
 import { weddingConfig } from '../data/wedding';
 import Reveal, { SplitTitle } from './Reveal';
 import { HeartFlourish } from './Flourishes';
+import Families from './Families';
 
 export default function CoupleSection() {
   const profiles = [
@@ -14,5 +15,6 @@ export default function CoupleSection() {
       <figure className="profile-photo"><img src={image.src} srcSet={image.srcSet} sizes="(max-width: 760px) 90vw, 42vw" width={image.width} height={image.height} alt={image.alt} loading="lazy" decoding="async"/><figcaption>{label}</figcaption></figure>
       <div className="profile-copy"><p className="eyebrow">{label}</p><h3>{person.name}</h3>{weddingConfig.profiles[key === 'groom' ? 'groomIntroduction' : 'brideIntroduction'] && <p className="body">{weddingConfig.profiles[key === 'groom' ? 'groomIntroduction' : 'brideIntroduction']}</p>}</div>
     </Reveal>)}</div>
+    <Families />
   </div></section>;
 }

@@ -4,7 +4,7 @@ import { imageAssets } from '../data/assets';
 
 const monogram = imageAssets.monogram;
 
-const links = [['#story', 'Our story'], ['#couple', 'The couple'], ['#gallery', 'Memories'], ['#invitation', 'Invitation'], ['#ceremony', 'Wedding day'], ['#rsvp', 'RSVP']];
+const links = [['#story', 'Our story'], ['#couple', 'The couple'], ['#gallery', 'Memories'], ['#invitation', 'Invitation'], ['#save', 'Save the date'], ['#ceremony', 'Wedding day'], ['#rsvp', 'RSVP']];
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
