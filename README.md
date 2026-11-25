@@ -40,7 +40,7 @@ Couple, bride, groom and both family pictures are the couple's own photographs. 
 
 ## Music
 
-Put an instrumental MP3 at `public/music/wedding.mp3` (ideally under 3 MB). It starts with the tap that opens the doors, fades in softly, loops and pauses while the tab is hidden; a round button in the bottom-right corner pauses and resumes it. Without the file nothing plays and the button stays hidden.
+The track is `public/music/wedding.mp3` (an instrumental wedding piece, 2 min 4 s, re-encoded at 128 kbps to about 1.9 MB). To change it, replace that file and keep it under 3 MB. It starts with the tap that opens the doors, fades in softly, loops and pauses while the tab is hidden; a round button in the bottom-right corner pauses and resumes it. Without the file nothing plays and the button stays hidden.
 
 ## RSVP and admin (requires Supabase credentials)
 
@@ -63,6 +63,5 @@ Only the public anon key belongs in `VITE_*` variables; never put a service-role
 - A date or details for "when friendship became love"; the timeline leaves this chapter out until then.
 - The year of the first family meeting (shown as "9 August").
 - A Bible translation, if the Genesis 2:24 text should be credited.
-- The background music MP3 (see Music).
 - A contact phone or WhatsApp number and an RSVP reply-by date, if wanted.
 - Applying `20261120000000_rsvp_rate_limit.sql` in Supabase, then one test reply to confirm.
