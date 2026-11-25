@@ -61,5 +61,5 @@ Only the public anon key belongs in `VITE_*` variables; never put a service-role
 ## Still needed from the couple
 
 - A date or details for "when friendship became love"; the timeline leaves this chapter out until then.
-- A contact phone or WhatsApp number and an RSVP reply-by date, if wanted.
+- An RSVP reply-by date, if wanted.
 - Applying `20261120000000_rsvp_rate_limit.sql` in Supabase, then one test reply to confirm.

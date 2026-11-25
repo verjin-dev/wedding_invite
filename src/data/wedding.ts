@@ -7,6 +7,7 @@ export const weddingConfig = {
     bride: { name: 'Anto Jesmi DK', displayName: 'Jesmi', portrait: '/images/IMG_2012(1).jpeg', position: '68%', parents: 'Mr. Devaraj A & Mrs. Kala', wishes: ['Anto Jerin D K'] },
     displayNames: 'Verjin & Jesmi',
   },
+  contact: { name: 'Verjin', phoneLabel: '+91 90801 81819', phoneDigits: '919080181819' },
   wedding: { date: '2027-05-17', dateLabel: '17 May 2027', dateLong: 'Monday, 17 May 2027', ceremonyTime: '10:00 AM', ceremonyTime24: '10:00', timezone: 'Asia/Kolkata', utcOffset: '+05:30' },
   ceremony: {
     title: 'Wedding', venue: 'Christ the King Church', location: 'Iruthayapuram', diocese: 'Kuzhithurai Diocese',
