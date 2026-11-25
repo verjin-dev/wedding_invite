@@ -54,5 +54,6 @@ function ScriptureCards() {
 export default function Scripture() {
   return <section className="scripture" aria-label="Scripture"><Stars /><Reveal className="scripture-inner"><span className="cross-mark" aria-hidden="true">{"✝"}</span><p className="eyebrow">A blessing for their beginning</p><blockquote className="verse"><span className="sr-only">“{weddingConfig.scripture.text}”</span><span aria-hidden="true">{`“${weddingConfig.scripture.text}”`.split(' ').map((word, index) => <span key={index}><span className="verse-word">{word}</span>{' '}</span>)}</span><cite>{weddingConfig.scripture.reference}</cite></blockquote>
     <p className="scripture-covenant">Two hearts brought together by grace, choosing to walk together in faith, love and God’s guidance.</p>
-    <ScriptureCards /></Reveal></section>;
+    <ScriptureCards />
+    {weddingConfig.scripture.translation && <p className="scripture-credit">Scripture from the {weddingConfig.scripture.translation}</p>}</Reveal></section>;
 }

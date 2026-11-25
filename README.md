@@ -26,7 +26,7 @@ There is no test suite or linter configured; `npm run build` runs the TypeScript
 
 ## Implemented and checked
 
-- Door-opening intro, hero, our story, love-story timeline, scripture (Genesis 2:24, a short phrase with no translation named), couple profiles, families with best wishes, gallery, formal invitation with scratch card, ceremony and reception cards, countdown, directions, RSVP, save the date, footer.
+- Door-opening intro, hero, our story, love-story timeline, scripture (Genesis 2:24 and four verse cards, all in the New American Bible, Revised Edition, credited on the page), couple profiles, families with best wishes, gallery, formal invitation with scratch card, ceremony and reception cards, countdown, directions, RSVP, save the date, footer.
 - Countdown to the ceremony in India Standard Time, with "married today" and "were married" states after the start; it never shows negative values.
 - Calendar: a Google Calendar link per event (ceremony and reception) and one `.ics` file with both. Only start times are given; no end time is guessed.
 - Directions: separate Google Maps links for the church and the reception hall, both supplied by the couple.
@@ -61,7 +61,5 @@ Only the public anon key belongs in `VITE_*` variables; never put a service-role
 ## Still needed from the couple
 
 - A date or details for "when friendship became love"; the timeline leaves this chapter out until then.
-- The year of the first family meeting (shown as "9 August").
-- A Bible translation, if the Genesis 2:24 text should be credited.
 - A contact phone or WhatsApp number and an RSVP reply-by date, if wanted.
 - Applying `20261120000000_rsvp_rate_limit.sql` in Supabase, then one test reply to confirm.

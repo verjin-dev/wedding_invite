@@ -17,10 +17,10 @@ export const weddingConfig = {
     time: '5:30 PM' as string | null, time24: '17:30' as string | null, mapUrl: 'https://maps.app.goo.gl/m8UKbJJW82Tsv3TL7' as string | null, image: 'receptionHall',
     imageAlt: 'Christ the King Community Hall set for the wedding reception, with a floral stage and rows of chairs',
   },
-  scripture: { reference: 'Genesis 2:24', translation: null as string | null, text: 'Therefore a man shall leave his father and mother and be united to his wife, and they shall become one flesh.' },
+  scripture: { reference: 'Genesis 2:24', translation: 'New American Bible, Revised Edition' as string | null, text: 'That is why a man leaves his father and mother and clings to his wife, and the two of them become one flesh.' },
   scriptureCards: [
-    { reference: '1 John 4:19', text: 'We love because He first loved us.' },
-    { reference: 'Mark 10:9', text: 'Therefore what God has joined together, let no one separate.' },
+    { reference: '1 John 4:19', text: 'We love because he first loved us.' },
+    { reference: 'Mark 10:9', text: 'Therefore, what God has joined together, no human being must separate.' },
     { reference: '1 Corinthians 13:4', text: 'Love is patient, love is kind.' },
     { reference: 'Ecclesiastes 4:9', text: 'Two are better than one.' },
   ],
@@ -43,7 +43,7 @@ export const weddingConfig = {
       // "When friendship became love" returns here once its details are confirmed; nothing is shown for it until then.
       { label: 'Chapter 01 · Since childhood', title: 'A Familiar Beginning', when: "Jesmi is the sister of Verjin's close friend" as string | null,
         text: 'Before we knew what forever meant, life had already placed us in the same story. What began as a childhood connection would one day become something much more beautiful.' },
-      { label: 'Chapter 02 · 9 August', title: 'A New Beginning', when: 'Our first official family meeting' as string | null,
+      { label: 'Chapter 02 · 9 August 2026', title: 'A New Beginning', when: 'Our first official family meeting' as string | null,
         text: 'Some moments quietly change the direction of our lives. This was one of them: our first official family meeting, bringing two families closer and giving our story a beautiful new beginning.' },
       { label: 'Chapter 03 · 2 October 2026', title: 'A Promise of Forever', when: "Engagement · 11:30 AM · Bride's home" as string | null,
         text: 'With the blessings of our families, we made a promise to walk through life together. Two hearts, two families and one beautiful future.' },
