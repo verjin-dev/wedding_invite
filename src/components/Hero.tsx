@@ -4,6 +4,7 @@ import { ArrowDown } from 'lucide-react';
 import { imageAssets, type ImageAsset } from '../data/assets';
 import { weddingConfig } from '../data/wedding';
 import { HeroPetals } from './Flourishes';
+import RosePetals from './RosePetals';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 /** Hidden behind the doors, then shown in turn once they open. */
@@ -33,6 +34,8 @@ export default function Hero({ revealed }: { revealed: boolean }) {
       <motion.img className="hero-media" src={exterior.fallback} srcSet={exterior.srcSet} sizes="100vw" width={exterior.width} height={exterior.height} alt={exterior.alt} fetchPriority="high" decoding="async" style={reduceMotion ? undefined : { y: imageY, scale: imageScale }} initial={{ opacity: .6 }} animate={{ opacity: revealed ? 1 : .6 }} transition={{ duration: 2.2, ease }} />
       <div className="hero-shade" aria-hidden="true" />
       <HeroPetals />
+      {/* A single shower of rose petals as the doors give way; it replays with the invitation. */}
+      {revealed && <RosePetals count={22} />}
       <div className="hero-frame" aria-hidden="true"><span/><span/><span/><span/></div>
       <motion.div className="hero-text" style={reduceMotion ? undefined : { y: textY }} initial="hidden" animate={state}>
         <motion.p className="eyebrow light" variants={enter(.45, { opacity: 0, y: 12 })}>A Sacred Beginning</motion.p>

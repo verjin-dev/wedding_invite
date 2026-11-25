@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { weddingConfig } from '../data/wedding';
 import { downloadIcs, googleCalendarUrl } from '../lib/calendar';
 import Countdown from './Countdown';
+import RosePetals from './RosePetals';
 import Reveal, { SplitTitle } from './Reveal';
 
 /** The share of the scroll that must be pulled open before it unrolls the rest of the way by itself. */
@@ -83,7 +84,7 @@ export default function SaveTheDate() {
         <span className="ribbon-charm" aria-hidden="true">{'✝'}</span>
       </motion.button>
       {!revealed && <p className="scroll-hint" aria-hidden="true"><Pointer size={18}/> Pull the ribbon</p>}
-      {revealed && !reduceMotion && <div className="scroll-petals" aria-hidden="true">{Array.from({ length: 14 }, (_, i) => <span key={i} style={{ ['--i' as string]: i }}/>)}</div>}
+      {revealed && <RosePetals className="rose-petals--scroll" count={18} />}
     </div>
 
     <Countdown />
