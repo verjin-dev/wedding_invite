@@ -1,5 +1,5 @@
 import { useState, type CSSProperties, type FormEvent } from 'react';
-import { Send } from 'lucide-react';
+import { MessageCircle, Phone, Send } from 'lucide-react';
 import Reveal from './Reveal';
 import { weddingConfig } from '../data/wedding';
 
@@ -77,6 +77,10 @@ export default function RSVP() {
         <label className="rsvp-wide">A message <span className="small">(optional)</span><textarea name="message" rows={3} maxLength={1000} /></label>
         <button className="pill solid" type="submit" disabled={busy}>{busy ? 'Sending…' : 'Send RSVP'} <Send size={16} /></button>
       </form><p className="rsvp-status" role="status" aria-live="polite">{status}</p>
-      <p className="rsvp-contact">Any questions? Call or message {weddingConfig.contact.name} on <a href={`tel:+${weddingConfig.contact.phoneDigits}`}>{weddingConfig.contact.phoneLabel}</a> · <a href={`https://wa.me/${weddingConfig.contact.phoneDigits}`} target="_blank" rel="noreferrer">WhatsApp</a></p>
+      <div className="rsvp-contact"><p>Any questions? Reach {weddingConfig.contact.name} on <span aria-label="a phone number, shown in part">{weddingConfig.contact.phoneMasked}</span></p>
+        <div className="rsvp-contact-actions">
+          <button type="button" className="pill" onClick={() => { window.location.href = `tel:+${weddingConfig.contact.phoneParts.join('')}`; }}><Phone size={16} aria-hidden="true"/> Call {weddingConfig.contact.name}</button>
+          <button type="button" className="pill" onClick={() => { window.open(`https://wa.me/${weddingConfig.contact.phoneParts.join('')}`, '_blank', 'noopener'); }}><MessageCircle size={16} aria-hidden="true"/> WhatsApp</button>
+        </div></div>
     </Reveal></section>;
 }
