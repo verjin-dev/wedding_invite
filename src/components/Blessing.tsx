@@ -18,8 +18,7 @@ export default function Blessing() {
       <SplitTitle id="blessing-title" text="Light a candle"/>
       <div className="candle" aria-hidden="true">
         <div className="candle-flame"><i/></div>
-        <div className="candle-wick" />
-        <div className="candle-body" />
+        <img className="candle-art" src="/images/candle.webp" width="420" height="318" alt="" loading="lazy" decoding="async" />
         {lit && <div className="candle-motes">{Array.from({ length: 9 }, (_, i) => <span key={i} style={{ ['--i' as string]: i }}/>)}</div>}
       </div>
       {!lit && <button type="button" className="pill solid" onClick={() => setLit(true)}><Flame size={16} aria-hidden="true"/> Light a candle</button>}
